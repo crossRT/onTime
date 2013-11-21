@@ -17,6 +17,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -47,10 +48,13 @@ public class Main extends SherlockFragmentActivity
 	private ActionBarDrawerToggle drawerToggle;
 	private ListView drawerMenu;
 	private Timetable timetable;
+	private Bundle savedInstanceState;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
+		Log.e("SHOWTIME","onCreate");
+		this.savedInstanceState = savedInstanceState;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		config = PreferenceManager.getDefaultSharedPreferences(this);
@@ -85,7 +89,23 @@ public class Main extends SherlockFragmentActivity
 		//Show changelog when new version installed
 		ChangeLog changelog = new ChangeLog(this);
 		if (changelog.firstRun()) changelog.getLogDialog().show();
+		
+//		if(savedInstanceState == null)
+//		{
+//			timetable = new TimetableNormal();
+//		}
 	}
+	
+//	public void onSaveInstanceState(Bundle outState)
+//	{
+//		Log.e("SHOWTIME","onSave");
+//		getSupportFragmentManager().putFragment(outState, "FRAGMENT", timetable);
+//	}
+//	public void onRestoreInstanceState(Bundle inState)
+//	{
+//		Log.e("SHOWTIME","onRestore");
+//		timetable = (Timetable)getSupportFragmentManager().getFragment(inState, "FRAGMENT");
+//	}
 	
 	@Override
     protected void onPostCreate(Bundle savedInstanceState)
@@ -98,6 +118,7 @@ public class Main extends SherlockFragmentActivity
 	@Override
 	public void onResume()
 	{
+		Log.e("SHOWTIME","onResume");
 		super.onResume();
 		//Make sure timetable is correct even if preferences changed
 		intakeCode = config.getString("intakeCode","");
@@ -116,9 +137,13 @@ public class Main extends SherlockFragmentActivity
 		}else
 		{
 			//Start default fragment
-			FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-			timetable = new TimetableNormal();
-			tx.replace(R.id.main_fragment, timetable).commit();
+			if(savedInstanceState==null)
+			{
+				Log.e("SHOWTIME","timetable is null?");
+				FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+				timetable = new TimetableNormal();
+				tx.replace(R.id.main_fragment, timetable).commit();
+			}
 		}
 	}
 	

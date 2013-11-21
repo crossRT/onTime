@@ -8,6 +8,11 @@ public class TimetableToday extends Timetable
 {	
 	private String today;
 	
+	public TimetableToday()
+	{
+		getTodayDate();
+	}
+	
 	@Override
 	public boolean validator(ClassPerclass perclass)
 	{
