@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <Preference android:key="menu_dialog" android:title="@string/app_version" android:summary="@string/app_author" />
+    <Preference android:key="menu_rate" android:title="@string/rate_title" android:summary="@string/rate_content" android:icon="@drawable/preferences_logo_rate"/>
+    <Preference android:key="menu_donate" android:title="@string/donate_title" android:summary="@string/donate_summary" android:icon="@drawable/preferences_logo_donate"/>
+    <PreferenceCategory android:key="Features" android:title="@string/preferences_features" >
+       	<ListPreference android:entries="@array/options_theme" android:entryValues="@array/options_theme" android:key="theme" android:title="@string/theme_title" />
+       	<CheckBoxPreference android:key="autoupdate" android:title="@string/autoupdate_title" android:summaryOn="@string/autoupdate_on" android:summaryOff="@string/autoupdate_off"/>
+       	<Preference android:title="@string/dashclock_title" android:summary="@string/dashclock_summary" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/intake_title" android:key="Intake">
+		<Preference android:title="@string/intake_current" android:key="viewIntake"/>
+		<ListPreference android:key="intakeCode" android:dialogTitle="@string/intake_select" android:title="@string/intake_select" android:entries="@array/options_prefix_intake" android:entryValues="@array/options_prefix_intake" />
+		<EditTextPreference android:key="intakeCode" android:dialogTitle="@string/intake_enter" android:title="@string/intake_enter"/>
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/filter_title" android:key="Filter">
+		<ListPreference android:title="@string/lecture_title" android:entries="@array/lecture" android:entryValues="@array/lecture" android:dialogTitle="@string/lecture_summary" android:key="lecture" />
+		<ListPreference android:entries="@array/lab" android:title="@string/lab_title" android:entryValues="@array/lab" android:dialogTitle="@string/lab_summary" android:key="lab" />
+		<ListPreference android:title="@string/tutorial_title" android:entries="@array/tutorial" android:entryValues="@array/tutorial" android:dialogTitle="@string/tutorial_summary" android:key="tutorial" />
+	</PreferenceCategory>
+
+</PreferenceScreen>

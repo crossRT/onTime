@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lecture">
+        <item></item>
+        <item>L-1</item>
+        <item>L-2</item>
+    </string-array>
+    <string-array name="lab">
+        <item></item>
+        <item>LAB-1</item>
+        <item>LAB-2</item>
+        <item>LAB-3</item>
+        <item>LAB-4</item>
+    </string-array>
+    <string-array name="tutorial">
+        <item></item>
+        <item>T-1</item>
+        <item>T-2</item>
+        <item>T-3</item>
+        <item>T-4</item>
+    </string-array>
+</resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Global -->
+    <string name="app_name">onTime</string>
+    <string name="app_version">onTime v4</string>
+    <string name="app_author">crossRT</string>
+    
+    
+    <!-- Preferences -->
+    <string name="rate_title">Rate ShowTime</string>
+    <string name="rate_content">Comment on Google Play.</string>
+    <string name="donate_title">Donate me</string>
+    <string name="donate_summary">Feel free to donate me via PayPal.</string>
+    <string name="preferences_features">Extra features</string>
+    <string name="theme_title">Theme setting</string>
+    <string name="autoupdate_title">Auto Update</string>
+	<string name="autoupdate_on">Update on every Saturday</string>
+    <string name="autoupdate_off">Enable to auto update timetable</string>
+    <string name="dashclock_title">DashClock widget</string>
+    <string name="dashclock_summary">For Android 4.2 above. Awesome feature!</string>
+    <string name="intake_title">Intake setting</string>
+    <string name="intake_current">Current intake: </string>
+    <string name="intake_select">Select your intake</string>
+    <string name="intake_enter">Enter your intake</string>
+    <string name="filter_title">Filter setting</string>
+    <string name="lecture_title">Lecture</string>
+    <string name="lecture_summary">Select your lecture</string>
+    <string name="lab_title">Lab</string>
+    <string name="lab_summary">Select your lab</string>
+	<string name="tutorial_title">Tutorial</string>
+    <string name="tutorial_summary">Select your tutorial</string>
+    
+    
+    <string name="menu_update">Update</string>
+    <string name="no_class_filter">No class is matched\nPlease check your filter settings. </string>
+    <string name="no_class_found">No class found</string>
+    <string name="no_connection">No internet connection</string>
+    
+    <!-- Menu -->
+    <string name="menu_normal_title">Normal</string>
+    <string name="menu_today_title">Today</string>
+    <string name="menu_all_title">All</string>
+    
+    <!-- ClassUpdater.java -->
+    <string name="downloading">Downloading timetable</string>
+    <string name="update_success">Timetable downloaded!</string>
+	<string name="connection_error">Connection error</string>
+	<string name="intake_no_class">Your intake timtable is empty</string>
+	
+	<!-- Changelog -->
+	<string name="changelog_full_title">Change Log</string>
+    <string name="changelog_title">What\'s New</string>
+    <string name="changelog_ok_button">OK</string>
+    <string name="changelog_show_full">more&#8230;</string>
+    <string name="changelog">Change Log</string>
+    <string name="ACT">All Class(no filter)</string>
+    
+</resources>

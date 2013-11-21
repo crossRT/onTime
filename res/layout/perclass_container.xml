@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@drawable/perclass_container_border"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+	<RelativeLayout
+	 	    android:id="@+id/left_part"
+        	android:layout_width="65dp"
+        	android:layout_height="@dimen/perclass_container_height"
+        	android:layout_alignParentBottom="true"
+        	android:layout_alignParentLeft="true"
+     	   	android:layout_alignParentTop="true" >
+     	   	
+	 	    <TextView
+                android:id="@+id/table_day"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_above="@+id/table_date"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:textSize="@dimen/perclass_day_size"
+                android:background="@drawable/perclass_border_right"
+                android:textIsSelectable="false"/>
+	 	    <TextView
+	 	        android:id="@+id/table_date"
+	 	        android:layout_width="match_parent"
+	 	        android:layout_height="14dp"
+	 	        android:layout_alignParentBottom="true"
+	 	        android:layout_alignParentLeft="true"
+	 	        android:gravity="center"
+	 	        android:textSize="@dimen/perclass_font_size"
+	 	        android:background="@drawable/perclass_border_top"
+	 	        android:textIsSelectable="false"  />
+	 	    
+		</RelativeLayout>
+
+		<RelativeLayout
+		    android:id="@+id/center_part"
+		    android:layout_width="200dp"
+		    android:layout_height="@dimen/perclass_container_height"
+		    android:layout_alignBottom="@+id/left_part"
+		    android:layout_alignTop="@+id/left_part"
+		    android:layout_gravity="center"
+		    android:layout_marginLeft="3dp"
+		    android:layout_toLeftOf="@+id/right_part"
+		    android:layout_toRightOf="@id/left_part" >
+
+	 	    <RelativeLayout
+	 	        android:id="@+id/center_part1"
+	 	        android:layout_width="wrap_content"
+	 	        android:layout_height="16dp"
+	 	        android:layout_alignParentLeft="true"
+	 	        android:layout_alignParentRight="true"
+	 	        android:layout_alignParentTop="true"
+	 	        android:background="@drawable/perclass_border_bottom" >
+
+				<TextView
+				    android:id="@+id/table_time"
+				    android:layout_width="wrap_content"
+				    android:layout_height="match_parent"
+				    android:layout_alignParentLeft="true"
+				    android:layout_alignParentRight="true"
+				    android:layout_alignParentTop="true"
+				    android:gravity="center_vertical"
+				    android:paddingLeft="2dp"
+				    android:textAppearance="?android:attr/textAppearanceMedium"
+				    android:textSize="@dimen/perclass_font_size"
+				    android:textIsSelectable="false" />
+
+				<TextView
+				    android:id="@+id/table_class"
+				    android:layout_width="wrap_content"
+				    android:layout_height="match_parent"
+				    android:layout_alignParentRight="true"
+				    android:layout_alignParentTop="true"
+				    android:layout_marginRight="10dp"
+				    android:textSize="@dimen/perclass_font_size"
+				    android:textIsSelectable="false"  />
+				    
+			</RelativeLayout>
+			<RelativeLayout
+	 	        android:id="@+id/center_part2"
+	 	        android:layout_width="wrap_content"
+	 	        android:layout_height="40dp"
+	 	        android:layout_alignParentLeft="true"
+	 	        android:layout_alignParentRight="true"
+	 	        android:layout_below="@+id/center_part1" >
+				<TextView
+				    android:id="@+id/table_subject"
+				    android:layout_width="match_parent"
+				    android:layout_height="match_parent"
+				    android:layout_alignParentBottom="true"
+				    android:layout_alignParentLeft="true"
+				    android:layout_alignParentRight="true"
+				    android:layout_alignParentTop="true"
+				    android:paddingLeft="2dp"
+				    android:gravity="center_vertical"
+				    android:textAppearance="?android:attr/textAppearanceLarge"
+				    android:textSize="@dimen/perclass_subject_size"
+				    android:textIsSelectable="false" />
+			</RelativeLayout>
+			<RelativeLayout
+	 	        android:id="@+id/center_part3"
+	 	        android:layout_width="wrap_content"
+	 	        android:layout_height="14dp"
+	 	        android:layout_alignParentBottom="true"
+	 	        android:layout_alignParentLeft="true"
+	 	        android:layout_alignParentRight="true"
+	 	        android:background="@drawable/perclass_border_top" >
+
+				<TextView
+				    android:id="@+id/table_lecturer"
+				    android:layout_width="match_parent"
+				    android:layout_height="match_parent"
+				    android:layout_alignParentLeft="true"
+				    android:layout_alignParentRight="true"
+				    android:gravity="center_vertical"
+				    android:paddingLeft="2dp"
+				    android:textAppearance="?android:attr/textAppearanceSmall"
+				    android:textSize="@dimen/perclass_font_size"
+				    android:textIsSelectable="false" />
+
+			</RelativeLayout>
+	 	</RelativeLayout>
+		<RelativeLayout
+		    android:id="@+id/right_part"
+		    android:layout_width="50dp"
+		    android:layout_height="@dimen/perclass_container_height"
+		    android:layout_alignBottom="@+id/center_part"
+		    android:layout_alignTop="@+id/center_part"
+		    android:layout_alignParentRight="true"
+		    android:background="@drawable/perclass_border_left" >
+			
+			<TextView
+			    android:id="@+id/table_location"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:gravity="center"
+			    android:textIsSelectable="false"/>
+
+		</RelativeLayout>
+</RelativeLayout>

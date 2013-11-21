@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <style type='text/css'>
+      a            { color:#a0a0e0 }
+      div.title    { 
+          color:#41B141; 
+          font-size:1.2em; 
+          font-weight:bold; 
+          margin-top:0.5em;}
+      div.subtitle { 
+          color:#41B141; 
+          font-size:0.8em;}
+      div.freetext { 
+      		color:#000000;
+      		font-size:0.8em;
+      		margin-top:0.5em;}
+      div.list     {
+      		color:#7D7D7D;
+      		font-size:0.8em;
+      		margin-top:0px;}
+    </style>
+  </head>
+  <body>
+$ 3.2
+	% Current Version 3.4
+	_ 2013-06-10
+	! Concentrate on improve the UI.
+	! Strongly recommend new Holo Theme!
+		* NEW theme - Holo Series!
+		* UI re-color
+		* fixed filter error
+		* fixed Android 2.3 crash
+		* fixed some issues on 3.2
+$ END_OF_CHANGE_LOG
+  </body>
+</html>

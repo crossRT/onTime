@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="options_theme">
+        <item>Default</item>
+        <item>Holo Red</item>
+        <item>Holo Yellow</item>
+        <item>Holo Blue</item>
+        <item>Holo Green</item>
+        <item>Red</item>
+        <item>Yellow</item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Brown</item>
+    </string-array>
+</resources>
