@@ -52,12 +52,24 @@ public class PreferencesSetup extends PreferenceActivity implements OnSharedPref
 			
 		}else if(key.equals("lecture")||key.equals("lab")||key.equals("tutorial"))
 		{
-			//Change lecture to "L" if user select empty
+			//Correct filter if user select empty
 			if(key.equals("lecture") && sp.getString(key, null).equals(""))
 			{
 				//Make sure intake is Upper case
 				SharedPreferences.Editor editor = sp.edit();
 				editor.putString(key, "L");
+				editor.commit();
+			}else if(key.equals("lab") && sp.getString(key, null).equals(""))
+			{
+				//Make sure intake is Upper case
+				SharedPreferences.Editor editor = sp.edit();
+				editor.putString(key, "LAB");
+				editor.commit();
+			}else if(key.equals("tutorial") && sp.getString(key, null).equals(""))
+			{
+				//Make sure intake is Upper case
+				SharedPreferences.Editor editor = sp.edit();
+				editor.putString(key, "T");
 				editor.commit();
 			}
 			getPreferenceScreen().findPreference(key).setSummary(sp.getString(key, ""));

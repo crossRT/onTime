@@ -17,7 +17,6 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -42,6 +41,8 @@ public class Main extends SherlockFragmentActivity
 	
 	protected static String intakeCode,theme; 							//Settings
 	protected static String filter_lecture,filter_lab,filter_tutorial; 	//Filter Settings
+	protected static boolean dayGroup;
+	protected static boolean first;
 	protected static ArrayList<ClassPerclass> classes = new ArrayList<ClassPerclass>();
 	
 	private DrawerLayout drawerLayout;
@@ -53,11 +54,13 @@ public class Main extends SherlockFragmentActivity
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
-		Log.e("SHOWTIME","onCreate");
 		this.savedInstanceState = savedInstanceState;
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
 		config = PreferenceManager.getDefaultSharedPreferences(this);
+		theme = config.getString("theme", "");
+		
+		setActionBarTheme(theme);
+		setContentView(R.layout.main);
 		
 		drawerLayout = (DrawerLayout) findViewById(R.id.main_layout);
 		drawerMenu = (ListView)findViewById(R.id.main_menu);
@@ -73,6 +76,7 @@ public class Main extends SherlockFragmentActivity
 			}
 		});
 		
+		//ActionBar setting
 		ActionBar actionBar = this.getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
@@ -90,22 +94,7 @@ public class Main extends SherlockFragmentActivity
 		ChangeLog changelog = new ChangeLog(this);
 		if (changelog.firstRun()) changelog.getLogDialog().show();
 		
-//		if(savedInstanceState == null)
-//		{
-//			timetable = new TimetableNormal();
-//		}
 	}
-	
-//	public void onSaveInstanceState(Bundle outState)
-//	{
-//		Log.e("SHOWTIME","onSave");
-//		getSupportFragmentManager().putFragment(outState, "FRAGMENT", timetable);
-//	}
-//	public void onRestoreInstanceState(Bundle inState)
-//	{
-//		Log.e("SHOWTIME","onRestore");
-//		timetable = (Timetable)getSupportFragmentManager().getFragment(inState, "FRAGMENT");
-//	}
 	
 	@Override
     protected void onPostCreate(Bundle savedInstanceState)
@@ -118,13 +107,13 @@ public class Main extends SherlockFragmentActivity
 	@Override
 	public void onResume()
 	{
-		Log.e("SHOWTIME","onResume");
 		super.onResume();
 		//Make sure timetable is correct even if preferences changed
 		intakeCode = config.getString("intakeCode","");
 		filter_lecture = config.getString("lecture", "");
 		filter_lab = config.getString("lab", "");
 		filter_tutorial = config.getString("tutorial", "");
+		dayGroup = config.getBoolean("day_group", true);
 		
 		//Check whether first time or the intakeCode is empty
 		if(config.getBoolean("first", true) || config.getString("intakeCode", "").equals(""))
@@ -133,13 +122,15 @@ public class Main extends SherlockFragmentActivity
 			startActivity(intent);
 			SharedPreferences.Editor editor = config.edit();
 			editor.putBoolean("first", false);
+			editor.putBoolean("day_group", true);
 			editor.commit();
+			
+			first = true; //Use to show different message when user first time using something;
 		}else
 		{
 			//Start default fragment
 			if(savedInstanceState==null)
 			{
-				Log.e("SHOWTIME","timetable is null?");
 				FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
 				timetable = new TimetableNormal();
 				tx.replace(R.id.main_fragment, timetable).commit();
@@ -304,6 +295,28 @@ public class Main extends SherlockFragmentActivity
 		NetworkInfo networkInfo = cm.getActiveNetworkInfo();
 		return networkInfo != null;
 	}
+	private void setActionBarTheme(String theme)
+	{
+		if(theme.equals("Holo Red"))
+		{
+			setTheme(R.style.onTime_Theme_Holo_Red);
+		}else if(theme.equals("Holo Yellow"))
+		{
+			setTheme(R.style.onTime_Theme_Holo_Yellow);
+		}else if(theme.equals("Holo Blue"))
+		{
+			setTheme(R.style.onTime_Theme_Holo_Blue);
+		}else if(theme.equals("Holo Green"))
+		{
+			setTheme(R.style.onTime_Theme_Holo_Green);
+		}else if(theme.equals("Holo Purple"))
+		{
+			setTheme(R.style.onTime_Theme_Holo_Purple);
+		}else
+		{
+			setTheme(R.style.onTime_Theme_Default);
+		}
+	}
 	
 	//Getter function
 	public String getLecture()
@@ -317,6 +330,10 @@ public class Main extends SherlockFragmentActivity
 	public String getTutorial()
 	{
 		return filter_tutorial;
+	}
+	public boolean getDayGroup()
+	{
+		return dayGroup;
 	}
 	public ArrayList<ClassPerclass> getClasses()
 	{

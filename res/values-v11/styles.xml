@@ -1,11 +1,53 @@
-<resources>
-
-    <!--
-        Base application theme for API 11+. This theme completely replaces
-        AppBaseTheme from res/values/styles.xml on API 11+ devices.
-    -->
-    <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
-        <!-- API 11 theme customizations can go here. -->
+<!-- values-v11 for Android 3.0 above-->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Root styling -->
+    <style name="onTime.ActionBar.Root" parent="Widget.Sherlock.ActionBar">
+        <item name="android:logo">@drawable/ic_actionbar</item>
+        <item name="android:titleTextStyle">@style/onTime.Title.Root</item>
+    </style>
+    <style name="onTime.Title.Root" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/font_white</item>
+    </style>
+    
+    <!-- ActionBar -->
+    <!-- All new ActionBar style should inherit onTime.ActionBar.Root -->
+    <style name="onTime.ActionBar.Default" parent="onTime.ActionBar.Root">
+		<item name="android:background">@color/action_bar_grey</item>
+	</style>
+	<style name="onTime.ActionBar.Red" parent="onTime.ActionBar.Root">
+		<item name="android:background">@color/action_bar_red</item>
+	</style>
+	<style name="onTime.ActionBar.Yellow" parent="onTime.ActionBar.Root">
+		<item name="android:background">@color/action_bar_yellow</item>
+	</style>
+	<style name="onTime.ActionBar.Blue" parent="onTime.ActionBar.Root">
+		<item name="android:background">@color/action_bar_blue</item>
+	</style>
+	<style name="onTime.ActionBar.Green" parent="onTime.ActionBar.Root">
+		<item name="android:background">@color/action_bar_green</item>
+	</style>
+	<style name="onTime.ActionBar.Purple" parent="onTime.ActionBar.Root">
+		<item name="android:background">@color/action_bar_purple</item>
+	</style>
+	
+    <!-- Application theme. -->
+    <style name="onTime.Theme.Default" parent="Theme.Sherlock.Light.DarkActionBar">
+		<item name="android:actionBarStyle">@style/onTime.ActionBar.Default</item>
+    </style>
+    <style name="onTime.Theme.Holo.Red" parent="Theme.Sherlock.Light.DarkActionBar">
+		<item name="android:actionBarStyle">@style/onTime.ActionBar.Red</item>
+    </style>
+    <style name="onTime.Theme.Holo.Yellow" parent="Theme.Sherlock.Light.DarkActionBar">
+		<item name="android:actionBarStyle">@style/onTime.ActionBar.Yellow</item>
+    </style>
+    <style name="onTime.Theme.Holo.Blue" parent="Theme.Sherlock.Light.DarkActionBar">
+		<item name="android:actionBarStyle">@style/onTime.ActionBar.Blue</item>
+    </style>
+    <style name="onTime.Theme.Holo.Green" parent="Theme.Sherlock.Light.DarkActionBar">
+		<item name="android:actionBarStyle">@style/onTime.ActionBar.Green</item>
+    </style>
+    <style name="onTime.Theme.Holo.Purple" parent="Theme.Sherlock.Light.DarkActionBar">
+		<item name="android:actionBarStyle">@style/onTime.ActionBar.Purple</item>
     </style>
 
 </resources>

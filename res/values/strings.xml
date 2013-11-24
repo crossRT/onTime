@@ -4,9 +4,10 @@
     <string name="app_name">onTime</string>
     <string name="app_version">onTime v4</string>
     <string name="app_author">crossRT</string>
-    
+    <string name="author">by CrossRT\nClick to open menu</string>
     
     <!-- Preferences -->
+    <string name="preference_menu_title">Menu</string>
     <string name="rate_title">Rate ShowTime</string>
     <string name="rate_content">Comment on Google Play.</string>
     <string name="donate_title">Donate me</string>
@@ -15,7 +16,10 @@
     <string name="theme_title">Theme setting</string>
     <string name="autoupdate_title">Auto Update</string>
 	<string name="autoupdate_on">Update on every Saturday</string>
-    <string name="autoupdate_off">Enable to auto update timetable</string>
+    <string name="autoupdate_off">Disable auto update</string>
+    <string name="group_title">Day Group</string>
+    <string name="group_on">Subject is group by day</string>
+    <string name="group_off">Disable group by day</string>
     <string name="dashclock_title">DashClock widget</string>
     <string name="dashclock_summary">For Android 4.2 above. Awesome feature!</string>
     <string name="intake_title">Intake setting</string>
@@ -30,10 +34,16 @@
 	<string name="tutorial_title">Tutorial</string>
     <string name="tutorial_summary">Select your tutorial</string>
     
+    <!-- Preferences Dialog -->
+    <string name="about_me_title">About me</string>
+    <string name="about_me_content">BLA BLA BLA</string>
+    <string name="contact_me">Contact me</string>
+    
     
     <string name="menu_update">Update</string>
     <string name="no_class_filter">No class is matched\nPlease check your filter settings. </string>
     <string name="no_class_found">No class found</string>
+    <string name="first_time">Thank you for using onTime\nNow pull to grab your timetable!</string>
     <string name="no_connection">No internet connection</string>
     
     <!-- Menu -->

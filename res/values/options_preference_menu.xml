@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="options_preference_menu">
+        <item>About me</item>
+        <item>Donate me</item>
+        <item>Change log</item>
+        <item>Contact me</item>
+        <item>Share to friend</item>
+    </string-array>
+</resources>

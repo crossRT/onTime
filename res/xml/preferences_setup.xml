@@ -11,10 +11,6 @@
 		<ListPreference android:title="@string/lecture_title" android:entries="@array/lecture" android:entryValues="@array/lecture" android:dialogTitle="@string/lecture_summary" android:key="lecture" />
 		<ListPreference android:entries="@array/lab" android:title="@string/lab_title" android:entryValues="@array/lab" android:dialogTitle="@string/lab_summary" android:key="lab" />
 		<ListPreference android:title="@string/tutorial_title" android:entries="@array/tutorial" android:entryValues="@array/tutorial" android:dialogTitle="@string/tutorial_summary" android:key="tutorial" />
-	</PreferenceCategory><PreferenceCategory android:key="Features" android:title="@string/preferences_features">
-       	<ListPreference android:entries="@array/options_theme" android:entryValues="@array/options_theme" android:key="theme" android:title="@string/theme_title" />
-       	<CheckBoxPreference android:key="autoupdate" android:title="@string/autoupdate_title" android:summaryOn="@string/autoupdate_on" android:summaryOff="@string/autoupdate_off" />
-       	<Preference android:title="@string/dashclock_title" android:summary="@string/dashclock_summary" />
-    </PreferenceCategory>
+	</PreferenceCategory>
 
 </PreferenceScreen>

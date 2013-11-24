@@ -1,20 +1,52 @@
+<!-- Normal values for 3.0 below devices -->
 <resources>
-
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+    <!-- Root styling -->
+    <style name="onTime.ActionBar.Root" parent="Widget.Sherlock.ActionBar">
+        <item name="titleTextStyle">@style/ActionBarTitle</item>
     </style>
-
+    <style name="ActionBarTitle" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/font_white</item>
+    </style>
+    
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    <style name="onTime.Theme.Default" parent="Theme.Sherlock.Light.DarkActionBar">
+		<item name="actionBarStyle">@style/onTime.ActionBar.Default</item>
     </style>
+    <style name="onTime.Theme.Holo.Red" parent="Theme.Sherlock.Light.DarkActionBar">
+		<item name="actionBarStyle">@style/onTime.ActionBar.Red</item>
+    </style>
+    <style name="onTime.Theme.Holo.Yellow" parent="Theme.Sherlock.Light.DarkActionBar">
+		<item name="actionBarStyle">@style/onTime.ActionBar.Yellow</item>
+    </style>
+    <style name="onTime.Theme.Holo.Blue" parent="Theme.Sherlock.Light.DarkActionBar">
+		<item name="actionBarStyle">@style/onTime.ActionBar.Blue</item>
+    </style>
+    <style name="onTime.Theme.Holo.Green" parent="Theme.Sherlock.Light.DarkActionBar">
+		<item name="actionBarStyle">@style/onTime.ActionBar.Green</item>
+    </style>
+    <style name="onTime.Theme.Holo.Purple" parent="Theme.Sherlock.Light.DarkActionBar">
+		<item name="actionBarStyle">@style/onTime.ActionBar.Purple</item>
+    </style>
+    
+    <!-- ActionBar -->
+    <!-- All new ActionBar style should inherit onTime.ActionBar.Root -->
+    <style name="onTime.ActionBar.Default" parent="onTime.ActionBar.Root">
+        <item name="background">@color/action_bar_grey</item>
+	</style>
+	<style name="onTime.ActionBar.Red" parent="onTime.ActionBar.Root">
+	    <item name="background">@color/action_bar_red</item>
+	</style>
+	<style name="onTime.ActionBar.Yellow" parent="onTime.ActionBar.Root">
+	    <item name="background">@color/action_bar_yellow</item>
+	</style>
+	<style name="onTime.ActionBar.Blue" parent="onTime.ActionBar.Root">
+	    <item name="background">@color/action_bar_blue</item>
+	</style>
+	<style name="onTime.ActionBar.Green" parent="onTime.ActionBar.Root">
+	    <item name="background">@color/action_bar_blue</item>
+	</style>
+	<style name="onTime.ActionBar.Purple" parent="onTime.ActionBar.Root">
+	    <item name="background">@color/action_bar_purple</item>
+	</style>
 
 </resources>

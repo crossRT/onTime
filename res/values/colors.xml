@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<color name="empty_message">#8B8B8B</color>
+	
+	<!-- Font color -->
+	<color name="font_white">#F5F5F5</color>
+	
+	<!-- Theme color -->
+	<color name="action_bar_grey">#8b8d88</color>
+	<color name="action_bar_red">#c7514b</color>
+	<color name="action_bar_yellow">#ffae19</color>
+	<color name="action_bar_blue">#4da6e2</color>
+	<color name="action_bar_green">#8fb200</color>
+	<color name="action_bar_purple">#b369d9</color>
+	
+	<color name="test">#FF0000</color>
 </resources>
