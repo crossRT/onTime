@@ -26,6 +26,7 @@
     <string name="intake_current">Current intake: </string>
     <string name="intake_select">Select your intake</string>
     <string name="intake_enter">Enter your intake</string>
+    <string name="intake_enter_summary">Manually enter when intake is not found.</string>
     <string name="filter_title">Filter setting</string>
     <string name="lecture_title">Lecture</string>
     <string name="lecture_summary">Select your lecture</string>

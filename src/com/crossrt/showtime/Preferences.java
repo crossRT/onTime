@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,7 +15,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
@@ -100,34 +100,41 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 			});
 	
 		//When select intake is click
-//		Log.e("SHOWTIME","HERE");
-//		final String[] entries = {"1","2","3","4"};
-//		final String[] entries2 = {"4","3","2","1"};
-//		final ListPreference listPreference = (ListPreference)findPreference("selectIntake");
-////		if(isNetworkAvailable())
-////		{
-////			
-////		}
-//		listPreference.setOnPreferenceClickListener(new OnPreferenceClickListener()
-//			{
-//				public boolean onPreferenceClick(Preference preference)
-//				{
-//					Log.e("SHOWTIME","CLICK");
-//					if(isNetworkAvailable())
-//					{
-//						Log.e("SHOWTIME","AVAILABLE");
-//						listPreference.setEntries(entries);
-//						listPreference.setEntryValues(entries);
-//						return true;
-//					}else
-//					{
-//						Log.e("SHOWTIME","not AVAILABLE");
-//						listPreference.setEntries(entries2);
-//						listPreference.setEntryValues(entries2);
-//						return true;
-//					}
-//				}
-//			});
+		Log.e("SHOWTIME","HERE");
+		final String[] entries = {"1","2","3","4","1","2","3"};
+		String[] entries2 = {"4","3","2","1"};
+		Preference listPreference = findPreference("selectIntake");
+		listPreference.setOnPreferenceClickListener(new OnPreferenceClickListener()
+			{
+				public boolean onPreferenceClick(Preference preference)
+				{
+					if(isNetworkAvailable())
+					{
+						Log.e("SHOWTIME","AVAILABLE");
+//						AlertDialog.Builder builder = new AlertDialog.Builder(Preferences.this);
+//						builder.setTitle(R.string.intake_select);
+//						builder.setItems(entries, new DialogInterface.OnClickListener()
+//							{
+//				               public void onClick(DialogInterface dialog, int which)
+//				               {
+//				            	   
+//				               }
+//							});
+//						builder.setPositiveButton("Cancel", null);
+//						builder.show();
+						
+						ProgressDialog mProgressDialog = new ProgressDialog(Preferences.this);
+						ClassIntakeDownloader downloader = new ClassIntakeDownloader(mProgressDialog);
+						downloader.execute();
+						
+						return true;
+					}else
+					{
+						Log.e("SHOWTIME","not AVAILABLE");
+						return true;
+					}
+				}
+			});
 	}
 	
 	@Override
@@ -304,6 +311,7 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 //			}
 		}
 	}
+	
 	private boolean isNetworkAvailable()
 	{
 		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

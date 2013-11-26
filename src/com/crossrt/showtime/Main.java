@@ -86,8 +86,7 @@ public class Main extends SherlockFragmentActivity
 				drawerLayout,
 				R.drawable.ic_drawer_am,
 				R.string.no_connection,
-				R.string.no_class_filter)
-		{};
+				R.string.no_class_filter);
 		drawerLayout.setDrawerListener(drawerToggle);
 		
 		//Show changelog when new version installed
