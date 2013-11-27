@@ -34,7 +34,7 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 	private static final String MY_EMAIL = "crossRT@gmail.com";
 	private static final String ADDRESS_PLAYSTORE="market://details?id=com.crossrt.showtime";
 	private static final String ADDRESS_WEB="http://play.google.com/store/apps/details?id=com.crossrt.showtime";
-	private static final String DONATE_LOCATION="https://dl.dropboxusercontent.com/u/14993838/ShowTimeDonate.html";
+	//private static final String DONATE_LOCATION="https://dl.dropboxusercontent.com/u/14993838/ShowTimeDonate.html";
 	
 	//Strings in preference
 	private static final String SEND_TITLE = "Send email";
@@ -100,9 +100,6 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 			});
 	
 		//When select intake is click
-		Log.e("SHOWTIME","HERE");
-		final String[] entries = {"1","2","3","4","1","2","3"};
-		String[] entries2 = {"4","3","2","1"};
 		Preference listPreference = findPreference("selectIntake");
 		listPreference.setOnPreferenceClickListener(new OnPreferenceClickListener()
 			{
@@ -111,28 +108,29 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 					if(isNetworkAvailable())
 					{
 						Log.e("SHOWTIME","AVAILABLE");
-//						AlertDialog.Builder builder = new AlertDialog.Builder(Preferences.this);
-//						builder.setTitle(R.string.intake_select);
-//						builder.setItems(entries, new DialogInterface.OnClickListener()
-//							{
-//				               public void onClick(DialogInterface dialog, int which)
-//				               {
-//				            	   
-//				               }
-//							});
-//						builder.setPositiveButton("Cancel", null);
-//						builder.show();
-						
 						ProgressDialog mProgressDialog = new ProgressDialog(Preferences.this);
-						ClassIntakeDownloader downloader = new ClassIntakeDownloader(mProgressDialog);
+						ClassIntakeDownloader downloader = new ClassIntakeDownloader(Preferences.this, mProgressDialog);
 						downloader.execute();
-						
-						return true;
 					}else
 					{
-						Log.e("SHOWTIME","not AVAILABLE");
-						return true;
+						final String[] list = Preferences.this.getResources().getStringArray(R.array.options_prefix_intake);
+						AlertDialog.Builder builder = new AlertDialog.Builder(Preferences.this);
+						builder.setTitle(R.string.intake_select);
+						builder.setItems(list, new DialogInterface.OnClickListener()
+							{
+								public void onClick(DialogInterface dialog, int which)
+								{
+									SharedPreferences config = PreferenceManager.getDefaultSharedPreferences(Preferences.this);
+									SharedPreferences.Editor editor = config.edit();
+									editor.putString("intakeCode", list[which]);
+									editor.commit();
+								}
+							});
+						builder.setPositiveButton("Cancel", null);
+						builder.show();
+						
 					}
+					return true;
 				}
 			});
 	}
@@ -248,7 +246,7 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 		Intent updateWidget =new Intent();
 		updateWidget.setAction(FILTER_UPDATED);
 		
-		if(key.equals("selectIntake") || key.equals("enterIntake"))
+		if(key.equals("intakeCode") || key.equals("enterIntake"))
 		{
 			String intakeCode = sp.getString(key, "").toUpperCase(Locale.US);
 			

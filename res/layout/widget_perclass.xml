@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_table"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="3dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:padding="2dp"
+    android:background="@color/table_lightGrey"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/widgetUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="0dp"
+        android:padding="0dp">
+
+        <TextView
+            android:id="@+id/widget_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:textSize="@dimen/widget_timeclass"
+            android:textColor="@color/time_grey"
+            android:textIsSelectable="false" />
+
+        <TextView
+            android:id="@+id/widget_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="2dip"
+            android:textSize="@dimen/widget_timeclass"
+            android:textColor="@color/time_grey"
+            android:textIsSelectable="false" />
+
+    </RelativeLayout>
+	<RelativeLayout
+        android:id="@+id/widgetDown"
+        android:layout_below="@id/widgetUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="0dp"
+	    android:padding="0dp">
+		
+		<TextView
+	        android:id="@+id/widget_subject"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentRight="true"
+	        android:textSize="@dimen/widget_subject"
+	        android:textColor="@color/subject_grey"
+	        android:textIsSelectable="false" />
+	</RelativeLayout>
+</RelativeLayout>

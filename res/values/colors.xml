@@ -13,5 +13,14 @@
 	<color name="action_bar_green">#8fb200</color>
 	<color name="action_bar_purple">#b369d9</color>
 	
+	<!-- Widget text colour -->
+	<color name="background_startGrey">#CCe0e1e1</color>
+	<color name="background_endGrey">#CCbcbdbd</color>
+	<color name="table_lightGrey">#99f5f5f5</color>
+	<color name="time_grey">#959696</color>
+	<color name="class_grey">#959696</color>
+	<color name="subject_grey">#838383</color>
+	
+	
 	<color name="test">#FF0000</color>
 </resources>

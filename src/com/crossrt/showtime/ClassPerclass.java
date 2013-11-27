@@ -4,7 +4,15 @@ public class ClassPerclass
 {
 	private String date,time,classes,location,subject,lecturer;
 	
-	public ClassPerclass(){}
+	public ClassPerclass()
+	{
+		this.date = "";
+		this.time = "";
+		this.classes = "";
+		this.location = "";
+		this.subject = "";
+		this.lecturer = "";
+	}
 	public ClassPerclass(String date, String time, String classes, String location, String subject, String lecturer)
 	{
 		this.date = date;

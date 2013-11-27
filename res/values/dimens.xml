@@ -7,11 +7,15 @@
     <!-- Universal Font Size -->
 	<dimen name="header_2">16sp</dimen>
     
-    
     <!-- Perclass container -->
     <dimen name="perclass_container_height">70dp</dimen>
     <dimen name="perclass_day_size">25sp</dimen>
     <dimen name="perclass_subject_size">18sp</dimen>
     <dimen name="perclass_font_size">12sp</dimen>
+    
+    <!-- Widget -->
+    <dimen name="widget_timeclass">9sp</dimen>
+	<dimen name="widget_subject">10sp</dimen>
+	<dimen name="widget_tittle">10sp</dimen>
 
 </resources>

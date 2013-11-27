@@ -8,74 +8,74 @@ import java.util.regex.Pattern;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.util.Log;
+import android.preference.PreferenceManager;
 
-public class ClassIntakeDownloader extends AsyncTask<String, Integer, String>
+public class ClassIntakeDownloader extends AsyncTask<Void, String, Void>
 {
 	private static final int RETRY_LIMIT = 3;
 	
-	ProgressDialog mProgressDialog;
-	Document doc;
-	Elements intakesElements;
-	private ArrayList<String> intakes = new ArrayList<String>();
+	private static final String PROGRESS_CONNECTING = "Connecting to APU";
+	private static final String PROGRESS_PARSING = "Parsing intake";
 	
-	public ClassIntakeDownloader(ProgressDialog mProgressDialog)
+	private Context context;
+	private ProgressDialog mProgressDialog;
+	private ArrayList<String> intakes = new ArrayList<String>();
+	int retryCount;
+	
+	public ClassIntakeDownloader(Context context, ProgressDialog mProgressDialog)
 	{
+		this.context = context;
 		this.mProgressDialog = mProgressDialog;
 	}
 	
 	@Override
 	protected void onPreExecute()
 	{
-		Log.e("SHOWTIME","START");
-		mProgressDialog.setMessage("Connecting to APU");
+		retryCount = 0;
+		
 		mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		mProgressDialog.setCancelable(false);
-		//mProgressDialog.show();
+		mProgressDialog.show();
 	}
-
+	
 	@Override
-	protected String doInBackground(String... arg0)
+	protected Void doInBackground(Void...params)
 	{
-		Log.e("SHOWTIME","DOING");
-		int count=0;
-		while(count<RETRY_LIMIT) //Reconnect to prevent weak connection
+		while(retryCount<RETRY_LIMIT ) //Reconnect to prevent weak connection
     	{
-			Log.e("SHOWTIME","DOING"+count);
     		try
     		{
-    			Log.e("SHOWTIME","in try");
+    			Document doc;
+    			Element script;
+    			
+    			publishProgress(PROGRESS_CONNECTING);
         		doc = (Document)Jsoup.connect(ClassUpdater.URL).get();
-        		//Log.e("SHOWTIME",doc.toString());
-        		Element script = doc.select("script").get(3);
-        		Log.e("SHOWTIME",script.toString());
-//        		
+        		script = doc.select("script").get(3);
+        		
+        		publishProgress(PROGRESS_PARSING);
         		//Pattern p = Pattern.compile("(?is)$(\'#selectIntakeAll\').append('<option value=\"(.+?)\">");
         		Pattern p = Pattern.compile("(?is)<option value=\"(.+?)\">");
         		Matcher m = p.matcher(script.toString());
-//        		
+        		
+        		m.find();
         		while(m.find())
         		{
-        			//Log.e("SHOWTIME","FOUND: " + m.group(1));
         			intakes.add(m.group(1));
         			m.find();
         		}
         		
-        		for(int i=0;i<intakes.size();i++)
-        		{
-        			Log.e("SHOWTIME","intake: "+intakes.get(i));
-        		}
-        		
-    			//success = true;
                 break;
     		}
     		catch(IOException e)
     		{
-    			count++;
+    			retryCount++;
     		}
     	}
 		
@@ -83,9 +83,41 @@ public class ClassIntakeDownloader extends AsyncTask<String, Integer, String>
 	}
 	
 	@Override
-	protected void onPostExecute(String result)
+	protected void onProgressUpdate(String... progress)
 	{
-		super.onPostExecute(result);
+		mProgressDialog.setMessage(progress[0]);
+	}
+	
+	@Override
+	protected void onPostExecute(Void result)
+	{
+		mProgressDialog.dismiss();
+		
+		if(intakes.size()!=0)
+		{
+			final String[] list = intakes.toArray(new String[intakes.size()]);
+			AlertDialog.Builder builder = new AlertDialog.Builder(context);
+			builder.setTitle(R.string.intake_select);
+			builder.setItems(list, new DialogInterface.OnClickListener()
+				{
+				public void onClick(DialogInterface dialog, int which)
+				{
+					SharedPreferences config = PreferenceManager.getDefaultSharedPreferences(context);
+					SharedPreferences.Editor editor = config.edit();
+		   			editor.putString("intakeCode", list[which]);
+		   			editor.commit();
+	               }
+				});
+			builder.setPositiveButton("Cancel", null);
+			builder.show();
+		}else if(retryCount==RETRY_LIMIT)
+		{
+			//Failed to connect APU
+			AlertDialog.Builder builder = new AlertDialog.Builder(context);
+			builder.setTitle(R.string.intake_select_failed);
+			builder.setPositiveButton("Cancel", null);
+			builder.show();
+		}
 	}
 
 }

@@ -25,6 +25,8 @@
     <string name="intake_title">Intake setting</string>
     <string name="intake_current">Current intake: </string>
     <string name="intake_select">Select your intake</string>
+    <string name="intake_select_failed">Connection error</string>
+    <string name="intake_select_summary">Get latest intake when device online.</string>
     <string name="intake_enter">Enter your intake</string>
     <string name="intake_enter_summary">Manually enter when intake is not found.</string>
     <string name="filter_title">Filter setting</string>
@@ -39,7 +41,6 @@
     <string name="about_me_title">About me</string>
     <string name="about_me_content">BLA BLA BLA</string>
     <string name="contact_me">Contact me</string>
-    
     
     <string name="menu_update">Update</string>
     <string name="no_class_filter">No class is matched\nPlease check your filter settings. </string>

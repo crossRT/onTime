@@ -243,6 +243,7 @@ public class Main extends SherlockFragmentActivity
 		{
 			if(!intakeCode.equals(""))
 			{
+				//Cancel current task if updater is existed and not finish.
 				if(updater!=null && updater.getStatus()!=AsyncTask.Status.FINISHED)
 				{
 					updater.cancel(true);
