@@ -185,6 +185,9 @@ public class Widget extends AppWidgetProvider
 		Log.e("SHOWTIME","index: "+index);
 		
 		//First class will show here
+		widgetLayout.setTextViewText(R.id.widget_header_time, classes.get(index).getTime());
+		widgetLayout.setTextViewText(R.id.widget_header_class, classes.get(index).getClasses());
+		widgetLayout.setTextViewText(R.id.widget_header_module, classes.get(index).getSubject());
 		
 		for(int i=index+1;i<classes.size();i++)
 		{
