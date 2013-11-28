@@ -299,22 +299,22 @@ public class Main extends SherlockFragmentActivity
 	{
 		if(theme.equals("Holo Red"))
 		{
-			setTheme(R.style.onTime_Theme_Holo_Red);
+			this.setTheme(R.style.onTime_Theme_Holo_Red);
 		}else if(theme.equals("Holo Yellow"))
 		{
-			setTheme(R.style.onTime_Theme_Holo_Yellow);
+			this.setTheme(R.style.onTime_Theme_Holo_Yellow);
 		}else if(theme.equals("Holo Blue"))
 		{
-			setTheme(R.style.onTime_Theme_Holo_Blue);
+			this.setTheme(R.style.onTime_Theme_Holo_Blue);
 		}else if(theme.equals("Holo Green"))
 		{
-			setTheme(R.style.onTime_Theme_Holo_Green);
+			this.setTheme(R.style.onTime_Theme_Holo_Green);
 		}else if(theme.equals("Holo Purple"))
 		{
-			setTheme(R.style.onTime_Theme_Holo_Purple);
+			this.setTheme(R.style.onTime_Theme_Holo_Purple);
 		}else
 		{
-			setTheme(R.style.onTime_Theme_Default);
+			this.setTheme(R.style.onTime_Theme_Default);
 		}
 	}
 	

@@ -1,52 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout 
-		    xmlns:android="http://schemas.android.com/apk/res/android"
-		    android:id="@+id/widget_layout"
-		    android:layout_width="match_parent"
-		    android:layout_height="match_parent"
-		    android:layout_margin="1dip"
-		    android:background="@drawable/widget_background"
-		    android:orientation="vertical" >
-    		<RelativeLayout 
-			    android:layout_width="match_parent"
-			    android:layout_height="40dip"
-			    android:orientation="horizontal">
-			    <RelativeLayout 
-			        android:id="@+id/widgetLeft"
-			        android:layout_width="40dip"
-			        android:layout_height="match_parent"
-			        android:layout_alignParentLeft="true">
-			      	<RelativeLayout
-			      	    android:layout_width="match_parent"
-			      	    android:layout_height="20dip"
-						android:background="#4da6e2"
-						android:layout_alignParentBottom="true"/>
-			        <RelativeLayout
-			            android:layout_width="match_parent"
-			            android:layout_height="20dip"
-			            android:layout_alignParentTop="true"
-			            android:background="#78c7fb"/>		        
-			    </RelativeLayout>
-
-			    <RelativeLayout
-			        android:layout_toLeftOf="@+id/widgetRight"
-			        android:layout_toRightOf="@id/widgetLeft"
-			    	android:layout_width="wrap_content"
-			        android:layout_height="match_parent"
-			        android:background="#55aeea" />
-
-			    <RelativeLayout 
-			        android:id="@id/widgetRight"
-			       	android:layout_width="40dip"
-			        android:layout_height="match_parent"
-					android:background="#78c7fb" 
-					android:layout_alignParentRight="true" />  
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/widget_layout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:layout_margin="1dip"
+	android:background="@drawable/widget_background"
+	android:orientation="vertical" >
+	
+	<RelativeLayout
+		android:id="@+id/widget_header"
+		android:layout_width="match_parent"
+		android:layout_height="40dip" >
+		<RelativeLayout
+			android:id="@+id/widget_top"
+			android:layout_width="match_parent"
+			android:layout_height="20dip" >
+			<RelativeLayout 
+				android:id="@+id/widget_topLeft"
+				android:layout_width="80dip"
+				android:layout_height="match_parent"
+				android:background="@color/time_blue"
+				android:paddingLeft="5dip"
+				android:layout_alignParentLeft="true">
+				<TextView
+					android:id="@+id/widget_header_time"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:layout_centerHorizontal="true"
+					android:textColor="@color/text_white"
+					android:textSize="@dimen/widget_time"
+					android:textStyle="bold"/>
 			</RelativeLayout>
-			
-			<LinearLayout 
-		    android:id="@+id/widget_content"
-		    android:layout_width="match_parent"
-		    android:layout_height="match_parent"
-		    android:layout_margin="2dip"
-		    android:orientation="vertical"/>
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_toEndOf="@id/widget_topLeft"
+				android:background="@color/class_blue" >
+				<TextView
+					android:id="@+id/widget_header_class"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:layout_centerHorizontal="true"
+					android:textColor="@color/text_white"
+					android:textSize="@dimen/widget_class"
+					android:textStyle="bold"/>
+			</RelativeLayout>
+		</RelativeLayout>
+		
+		<RelativeLayout
+			android:id="@+id/widget_bottom"
+			android:layout_alignParentBottom="true"
+			android:layout_width="match_parent"
+			android:layout_height="20dip"
+			android:paddingLeft="6dip"
+			android:background="@color/module_blue" >
+			<TextView 
+				android:id="@+id/widget_header_module"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/text_white"
+				android:layout_centerVertical="true" 
+				android:textSize="@dimen/widget_module"/>  	    
+		</RelativeLayout>	
+	</RelativeLayout>
+	
+	<LinearLayout 
+	android:id="@+id/widget_content"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:layout_margin="2dip"
+	android:orientation="vertical"/>
 </LinearLayout>
