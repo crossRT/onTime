@@ -19,8 +19,8 @@
 	<dimen name="widget_tittle">10sp</dimen>
 	
 	<!-- Widget font size -->
-    <dimen name="widget_time">11sp</dimen>
-    <dimen name="widget_class">11sp</dimen>
+    <dimen name="widget_time">10sp</dimen>
+    <dimen name="widget_class">10sp</dimen>
     <dimen name="widget_module">12sp</dimen>
 
 </resources>
