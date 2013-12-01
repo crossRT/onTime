@@ -17,8 +17,8 @@
     <string name="autoupdate_title">Auto Update</string>
 	<string name="autoupdate_on">Update on every Saturday</string>
     <string name="autoupdate_off">Disable auto update</string>
-    <string name="group_title">Day Group</string>
-    <string name="group_on">Subject is group by day</string>
+    <string name="group_title">Group by Day</string>
+    <string name="group_on">Subject is grouped by day</string>
     <string name="group_off">Disable group by day</string>
     <string name="dashclock_title">DashClock widget</string>
     <string name="dashclock_summary">For Android 4.2 above. Awesome feature!</string>
@@ -26,7 +26,7 @@
     <string name="intake_current">Current intake: </string>
     <string name="intake_select">Select your intake</string>
     <string name="intake_select_failed">Connection error</string>
-    <string name="intake_select_summary">Get latest intake when device online.</string>
+    <string name="intake_select_summary">Get latest intake when device is online.</string>
     <string name="intake_enter">Enter your intake</string>
     <string name="intake_enter_summary">Manually enter when intake is not found.</string>
     <string name="filter_title">Filter setting</string>
@@ -57,7 +57,7 @@
     <string name="downloading">Downloading timetable</string>
     <string name="update_success">Timetable downloaded!</string>
 	<string name="connection_error">Connection error</string>
-	<string name="intake_no_class">Your intake timtable is empty</string>
+	<string name="intake_no_class">Your intake timetable is empty</string>
 	
 	<!-- Changelog -->
 	<string name="changelog_full_title">Change Log</string>
