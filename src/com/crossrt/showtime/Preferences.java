@@ -1,10 +1,13 @@
 package com.crossrt.showtime;
 
 
+import java.util.Calendar;
 import java.util.Locale;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -246,7 +249,7 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 		Intent updateWidget =new Intent();
 		updateWidget.setAction(FILTER_UPDATED);
 		
-		if(key.equals("intakeCode") || key.equals("enterIntake"))
+		if(key.equals("intakeCode"))
 		{
 			String intakeCode = sp.getString(key, "").toUpperCase(Locale.US);
 			
@@ -257,23 +260,23 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 			
 			getPreferenceScreen().findPreference("viewIntake").setSummary(intakeCode);
 			
-//			sendBroadcast(updateWidget);
+			sendBroadcast(updateWidget);
 		}else if(key.equals("lecture")||key.equals("lab")||key.equals("tutorial"))
 		{
 			//Correct filter if user select empty
-			if(key.equals("lecture") && sp.getString(key, null).equals(""))
+			if(key.equals("lecture") && sp.getString(key, "").equals(""))
 			{
 				//Make sure intake is Upper case
 				SharedPreferences.Editor editor = sp.edit();
 				editor.putString(key, "L");
 				editor.commit();
-			}else if(key.equals("lab") && sp.getString(key, null).equals(""))
+			}else if(key.equals("lab") && sp.getString(key, "").equals(""))
 			{
 				//Make sure intake is Upper case
 				SharedPreferences.Editor editor = sp.edit();
 				editor.putString(key, "LAB");
 				editor.commit();
-			}else if(key.equals("tutorial") && sp.getString(key, null).equals(""))
+			}else if(key.equals("tutorial") && sp.getString(key, "").equals(""))
 			{
 				//Make sure intake is Upper case
 				SharedPreferences.Editor editor = sp.edit();
@@ -282,31 +285,37 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 			}
 			getPreferenceScreen().findPreference(key).setSummary(sp.getString(key, ""));
 			
-//			sendBroadcast(updateWidget);
+			sendBroadcast(updateWidget);
 		}else if(key.equals("theme"))
 		{
 			getPreferenceScreen().findPreference(key).setSummary(sp.getString(key, ""));
 			schduledRestart = true;
-		}else if(key.equals("autoupdate"))
+		}else if(key.equals("auto_update"))
 		{
-//			boolean autoUpdate = sp.getBoolean(key, false);
-//			Calendar calendar=Calendar.getInstance();
-//			calendar.set(Calendar.DAY_OF_WEEK,7);
-//			calendar.set(Calendar.HOUR_OF_DAY,13);
-//			calendar.set(Calendar.MINUTE,0);
-//			calendar.set(Calendar.SECOND,0);
-//			Intent intent = new Intent(this,CallAutoUpdate.class);
-//			intent.setAction("AUTOUPDATE");
-//			PendingIntent pi = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//			AlarmManager updateAlarm=(AlarmManager) this.getSystemService(ALARM_SERVICE);
+			boolean autoUpdate = sp.getBoolean(key, false);
 			
-//			if(autoupdate==true)
-//			{
-//				updateAlarm.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pi);
-//			}else
-//			{
-//				updateAlarm.cancel(pi);
-//			}
+			/* Set every Saturday 1pm update alarm */
+			Calendar calendar=Calendar.getInstance();
+			calendar.set(Calendar.DAY_OF_WEEK,7);
+			calendar.set(Calendar.HOUR_OF_DAY,13);
+			calendar.set(Calendar.MINUTE,0);
+			calendar.set(Calendar.SECOND,0);
+			
+			/* Intent attach to the alarm.
+			 * When alarm trigger, the intent will fire and call background service
+			 */
+			Intent intent = new Intent(this,ClassAutoUpdate.class);
+			intent.setAction(ClassAutoUpdate.AUTO_UPDATE);
+			PendingIntent pi = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+			AlarmManager updateAlarm=(AlarmManager) this.getSystemService(ALARM_SERVICE);
+			
+			if(autoUpdate) /* Set alarm if function enable */
+			{
+				updateAlarm.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pi);
+			}else /* Otherwise cancel it */
+			{
+				updateAlarm.cancel(pi);
+			}
 		}
 	}
 	

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<ListPreference android:key="set_time" android:title="@string/display_before" android:entryValues="@array/display_time" android:entries="@array/display_time"/>
+</PreferenceScreen>

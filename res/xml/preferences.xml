@@ -12,7 +12,7 @@
     <PreferenceCategory android:title="@string/intake_title" android:key="Intake">
 		<Preference android:title="@string/intake_current" android:key="viewIntake"/>
 		<Preference android:title="@string/intake_select" android:key="selectIntake" android:summary="@string/intake_select_summary"/>
-		<EditTextPreference android:key="enterIntake" android:dialogTitle="@string/intake_enter" android:title="@string/intake_enter" android:summary="@string/intake_enter_summary"/>
+		<EditTextPreference android:key="intakeCode" android:dialogTitle="@string/intake_enter" android:title="@string/intake_enter" android:summary="@string/intake_enter_summary"/>
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/filter_title" android:key="Filter">
 		<ListPreference android:title="@string/lecture_title" android:entries="@array/lecture" android:entryValues="@array/lecture" android:dialogTitle="@string/lecture_summary" android:key="lecture" />

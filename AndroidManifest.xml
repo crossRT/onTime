@@ -17,7 +17,8 @@
         android:theme="@style/onTime.Theme.Default" >
         <activity
             android:name=".Main"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -39,11 +40,49 @@
             android:name=".Widget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.intent.action.DATE_CHANGED"/>
+                <action android:name="com.crossrt.showtime.UPDATE_SUCCESS"/>
+                <action android:name="com.crossrt.showtime.FILTER_UPDATED"/>
             </intent-filter>
             <meta-data 
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info"/>
         </receiver>
+        
+        <!-- Auto Updater -->
+        <receiver android:name=".ClassAutoUpdate" android:exported="true" android:enabled="true" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+            	<action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <service android:name=".ClassAutoUpdateService"></service>
+        
+        <!-- DashClock Widget -->
+        <service android:name=".DCWidget"
+            android:icon="@drawable/ic_actionbar"
+            android:label="@string/app_name"
+            android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA">
+            <intent-filter>
+                <action android:name="com.google.android.apps.dashclock.Extension" />
+            </intent-filter>
+            <meta-data android:name="protocolVersion" android:value="1" />
+            <meta-data android:name="description"
+                android:value="Display the coming class" />
+            <meta-data android:name="settingsActivity"
+                android:value=".DCWidgetSettings" />
+        </service>
+        <receiver android:name=".DCProvider" android:exported="false">
+        	<intent-filter>
+        	    <action android:name="com.crossrt.showtime.DATABASE_UPDATED"/>
+        	    <action android:name="com.crossrt.showtime.FILTER_UPDATED"/>
+        	</intent-filter>
+        </receiver>
+        <activity 
+		    android:name=".DCWidgetSettings"
+		    android:label="DCWidgetSettings"
+		    android:exported="true">		    
+		</activity>
+        
     </application>
 
 </manifest>

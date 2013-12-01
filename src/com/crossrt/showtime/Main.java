@@ -31,6 +31,9 @@ import com.actionbarsherlock.view.MenuItem;
 
 public class Main extends SherlockFragmentActivity
 {	
+	public static final String INTENT_EXTRA = "com.crossrt.showtime.INTENT_EXTRA";
+	public static final String LAUNCH_TODAY = "com.crossrt.showtime.LAUNCH_TODAY";
+	
 	private SharedPreferences config;
 	private ClassUpdater updater;
 	private BroadcastReceiver receiveUpdate;
@@ -50,11 +53,13 @@ public class Main extends SherlockFragmentActivity
 	private ListView drawerMenu;
 	private Timetable timetable;
 	private Bundle savedInstanceState;
+	private Intent intent;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		this.savedInstanceState = savedInstanceState;
+		this.intent = getIntent();
 		super.onCreate(savedInstanceState);
 		config = PreferenceManager.getDefaultSharedPreferences(this);
 		theme = config.getString("theme", "");
@@ -91,7 +96,11 @@ public class Main extends SherlockFragmentActivity
 		
 		//Show changelog when new version installed
 		ChangeLog changelog = new ChangeLog(this);
-		if (changelog.firstRun()) changelog.getLogDialog().show();
+		if (changelog.firstRun())
+		{
+			changelog.getLogDialog().show();
+			changelog.getLastVersion();
+		}
 		
 	}
 	
@@ -130,8 +139,19 @@ public class Main extends SherlockFragmentActivity
 			//Start default fragment
 			if(savedInstanceState==null)
 			{
+				String intentExtra = intent.getStringExtra(INTENT_EXTRA);
 				FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-				timetable = new TimetableNormal();
+				//Log.e("SHOWTIME",intentExtra.toString());
+				if(intentExtra!=null)
+				{
+					if(intentExtra.equals(LAUNCH_TODAY))
+					{
+						timetable = new TimetableToday();
+					}
+				}else
+				{
+					timetable = new TimetableNormal();
+				}
 				tx.replace(R.id.main_fragment, timetable).commit();
 			}
 		}

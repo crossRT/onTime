@@ -4,8 +4,8 @@
     
     <PreferenceCategory android:title="@string/intake_title" android:key="Intake">
 		<Preference android:title="@string/intake_current" android:key="viewIntake"/>
-		<ListPreference android:key="intakeCode" android:dialogTitle="@string/intake_select" android:title="@string/intake_select" android:entries="@array/options_prefix_intake" android:entryValues="@array/options_prefix_intake" />
-		<EditTextPreference android:key="intakeCode" android:dialogTitle="@string/intake_enter" android:title="@string/intake_enter"/>
+		<Preference android:key="selectIntake" android:dialogTitle="@string/intake_select" android:title="@string/intake_select" android:summary="@string/intake_select_summary"/>
+		<EditTextPreference android:key="intakeCode" android:dialogTitle="@string/intake_enter" android:title="@string/intake_enter" android:summary="@string/intake_enter_summary"/>
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/filter_title" android:key="Filter">
 		<ListPreference android:title="@string/lecture_title" android:entries="@array/lecture" android:entryValues="@array/lecture" android:dialogTitle="@string/lecture_summary" android:key="lecture" />

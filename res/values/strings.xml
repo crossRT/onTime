@@ -67,4 +67,7 @@
     <string name="changelog">Change Log</string>
     <string name="ACT">All Class(no filter)</string>
     
+    <!-- DashClock -->
+    <string name="display_before">Display class before (minutes)</string>
+    
 </resources>

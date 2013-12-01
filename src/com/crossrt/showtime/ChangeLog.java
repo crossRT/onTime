@@ -95,15 +95,15 @@ public class ChangeLog {
 							}
 						});
 
-		if (!full) {
-			// "more ..." button
-			builder.setNegativeButton(R.string.changelog_show_full,
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int id) {
-							getFullLogDialog().show();
-						}
-					});
-		}
+//		if (!full) {
+//			// "more ..." button
+//			builder.setNegativeButton(R.string.changelog_show_full,
+//					new DialogInterface.OnClickListener() {
+//						public void onClick(DialogInterface dialog, int id) {
+//							getFullLogDialog().show();
+//						}
+//					});
+//		}
 
 		return builder.create();
 	}

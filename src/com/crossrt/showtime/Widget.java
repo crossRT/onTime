@@ -30,7 +30,7 @@ public class Widget extends AppWidgetProvider
 	private AppWidgetManager appWidgetManager;
 	private int[] appWidgetIds;
 	
-	private static ArrayList<ClassPerclass> classes;
+	private static ArrayList<ClassPerclass> classes = new ArrayList<ClassPerclass>();
 	
 	@Override
 	public void onUpdate(Context context,AppWidgetManager appWidgetManager,int[] appWidgetIds)
@@ -46,9 +46,9 @@ public class Widget extends AppWidgetProvider
 		this.context = context;
 		appWidgetManager = AppWidgetManager.getInstance(context);
 		appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(context, Widget.class));
-
+		
 		/*
-		 * Identify what to do when received broadcast from system
+		 * What to do when received broadcast from system
 		 */
 		if(intent.getStringExtra(WIDGET_BROADCAST_TYPE)!=null)
 		{
@@ -70,7 +70,10 @@ public class Widget extends AppWidgetProvider
 			}
 		}else if(intent.getAction()!=null)
 		{
-			if(intent.getAction().equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE))
+			String intentAction = intent.getAction();
+			if(intentAction.equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+					|| intentAction.equals("android.intent.action.DATE_CHANGED")
+					|| intentAction.equals(ClassUpdater.UPDATE_SUCCESS))
 			{
 				//Normal read and write
 				readTimetable();
@@ -96,8 +99,16 @@ public class Widget extends AppWidgetProvider
 					 */
 					if(current.before(checkTime))
 					{
-						writeToWidget(i-1);
-						setNextAlarm(hour,minute,i);
+						/* To avoid i==0 will throw exception when user add widget before the class */
+						if(i!=0)
+						{
+							writeToWidget(i-1);
+							setNextAlarm(hour,minute,i);
+						}else
+						{
+							writeToWidget();
+							setNextAlarm(hour,minute,i);
+						}
 						break;
 					}else count++;
 					
@@ -161,7 +172,13 @@ public class Widget extends AppWidgetProvider
 		String packageName = context.getPackageName();
 		RemoteViews widgetLayout = new RemoteViews(packageName,R.layout.widget_layout);
 		widgetLayout.removeAllViews(R.id.widget_content);
-		Log.e("SHOWTIME","classes size: "+classes.size());
+		
+		//Set onClick listener
+		Intent intent = new Intent(context,Main.class);
+		intent.putExtra(Main.INTENT_EXTRA, Main.LAUNCH_TODAY);
+		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+		widgetLayout.setOnClickPendingIntent(R.id.widget_content, pendingIntent);
+		
 		for(int i=0;i<classes.size();i++)
 		{
 			RemoteViews widgetPerclass = new RemoteViews(packageName,R.layout.widget_perclass);
@@ -182,16 +199,20 @@ public class Widget extends AppWidgetProvider
 		String packageName = context.getPackageName();
 		RemoteViews widgetLayout = new RemoteViews(packageName,R.layout.widget_layout);
 		widgetLayout.removeAllViews(R.id.widget_content);
-		Log.e("SHOWTIME","index: "+index);
 		
 		//First class will show here
 		widgetLayout.setTextViewText(R.id.widget_header_time, classes.get(index).getTime());
 		widgetLayout.setTextViewText(R.id.widget_header_class, classes.get(index).getClasses());
 		widgetLayout.setTextViewText(R.id.widget_header_module, classes.get(index).getSubject());
 		
+		//Set onClick listener
+		Intent intent = new Intent(context,Main.class);
+		intent.putExtra(Main.INTENT_EXTRA, Main.LAUNCH_TODAY);
+		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+		widgetLayout.setOnClickPendingIntent(R.id.widget_content, pendingIntent);
+		
 		for(int i=index+1;i<classes.size();i++)
 		{
-			Log.e("SHOWTIME","inside: "+ i);
 			RemoteViews widgetPerclass = new RemoteViews(packageName,R.layout.widget_perclass);
 			widgetPerclass.setTextViewText(R.id.widget_time, classes.get(i).getTime());
 			widgetPerclass.setTextViewText(R.id.widget_class, classes.get(i).getClasses());
