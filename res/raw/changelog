@@ -26,13 +26,15 @@ $ 4.0
 	_ 2013-12-02
 	! A huge update from v3.4
 	! Give comment if you like this update!
+		* Change name to onTime
 		* Code re-factor, better performance
 		* UI, logo re-design
 		* Widget re-design
+		* Group by day
 		* fixed 'intake-can't-be-found' problem
 		* fixed intake with '{XX}' can't update
 		* abandoned Android 2.2 users, since it has obsoleted and hard to maintain. Sorry for that.
-	! More extra function will come on next version!
+	! More extra functions will come on next version!
 $ END_OF_CHANGE_LOG
   </body>
 </html>
