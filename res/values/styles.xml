@@ -1,12 +1,34 @@
 <!-- Normal values for 3.0 below devices -->
 <resources>
-    <!-- Root styling -->
+   	<!-- Root styling -->
     <style name="onTime.ActionBar.Root" parent="Widget.Sherlock.ActionBar">
-        <item name="titleTextStyle">@style/ActionBarTitle</item>
+        <item name="logo">@drawable/ic_actionbar</item>
+        <item name="titleTextStyle">@style/onTime.Title.Root</item>
     </style>
-    <style name="ActionBarTitle" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
+    <style name="onTime.Title.Root" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
         <item name="android:textColor">@color/font_white</item>
     </style>
+    
+    <!-- ActionBar -->
+    <!-- All new ActionBar style should inherit onTime.ActionBar.Root -->
+    <style name="onTime.ActionBar.Default" parent="onTime.ActionBar.Root">
+		<item name="background">@color/action_bar_grey</item>
+	</style>
+	<style name="onTime.ActionBar.Red" parent="onTime.ActionBar.Root">
+		<item name="background">@color/action_bar_red</item>
+	</style>
+	<style name="onTime.ActionBar.Yellow" parent="onTime.ActionBar.Root">
+		<item name="background">@color/action_bar_yellow</item>
+	</style>
+	<style name="onTime.ActionBar.Blue" parent="onTime.ActionBar.Root">
+		<item name="background">@color/action_bar_blue</item>
+	</style>
+	<style name="onTime.ActionBar.Green" parent="onTime.ActionBar.Root">
+		<item name="background">@color/action_bar_green</item>
+	</style>
+	<style name="onTime.ActionBar.Purple" parent="onTime.ActionBar.Root">
+		<item name="background">@color/action_bar_purple</item>
+	</style>
     
     <!-- Application theme. -->
     <style name="onTime.Theme.Default" parent="Theme.Sherlock.Light.DarkActionBar">
@@ -27,26 +49,5 @@
     <style name="onTime.Theme.Holo.Purple" parent="Theme.Sherlock.Light.DarkActionBar">
 		<item name="actionBarStyle">@style/onTime.ActionBar.Purple</item>
     </style>
-    
-    <!-- ActionBar -->
-    <!-- All new ActionBar style should inherit onTime.ActionBar.Root -->
-    <style name="onTime.ActionBar.Default" parent="onTime.ActionBar.Root">
-        <item name="background">@color/action_bar_grey</item>
-	</style>
-	<style name="onTime.ActionBar.Red" parent="onTime.ActionBar.Root">
-	    <item name="background">@color/action_bar_red</item>
-	</style>
-	<style name="onTime.ActionBar.Yellow" parent="onTime.ActionBar.Root">
-	    <item name="background">@color/action_bar_yellow</item>
-	</style>
-	<style name="onTime.ActionBar.Blue" parent="onTime.ActionBar.Root">
-	    <item name="background">@color/action_bar_blue</item>
-	</style>
-	<style name="onTime.ActionBar.Green" parent="onTime.ActionBar.Root">
-	    <item name="background">@color/action_bar_blue</item>
-	</style>
-	<style name="onTime.ActionBar.Purple" parent="onTime.ActionBar.Root">
-	    <item name="background">@color/action_bar_purple</item>
-	</style>
 
 </resources>
