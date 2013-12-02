@@ -60,7 +60,7 @@ public class Widget extends AppWidgetProvider
 				writeToWidget(index);
 				
 				//Set next class alarm if next class available
-				if(index>=classes.size())
+				if(index<classes.size()-1)
 				{
 					int nextClassId = index+1;	//index is current class, now need to set for next class
 					int hour = Integer.parseInt(classes.get(nextClassId).getTime().substring(0, 2));
@@ -116,6 +116,7 @@ public class Widget extends AppWidgetProvider
 					if(count==classes.size())
 					{
 						writeToWidget();
+						break;
 					}
 				}
 			}

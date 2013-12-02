@@ -10,6 +10,8 @@
     <string name="preference_menu_title">Menu</string>
     <string name="rate_title">Rate ShowTime</string>
     <string name="rate_content">Comment on Google Play.</string>
+    <string name="share_title">Share onTime</string>
+    <string name="share_summary">Share this app with your friend.</string>
     <string name="donate_title">Donate me</string>
     <string name="donate_summary">Feel free to donate me via PayPal.</string>
     <string name="preferences_features">Extra features</string>
@@ -38,8 +40,10 @@
     <string name="tutorial_summary">Select your tutorial</string>
     
     <!-- Preferences Dialog -->
-    <string name="about_me_title">About me</string>
-    <string name="about_me_content">BLA BLA BLA</string>
+    <string name="about_title">About</string>
+    <string name="about_content">onTime is ex-ShowTime, APU timetable assistant.\nThis app is created for convenience APU student.\n\nShare it to your friend if you found this is useful.\n\nCheers,\nCrossRT</string>
+    <string name="donate_content">This app is totally free, but if you are pleased with my work, feel free to donate me.\nYour donation will help on my next project.\nI will be grateful if you decide to donated for me.</string>
+    <string name="donate_button">Yes, bring me on!</string>
     <string name="contact_me">Contact me</string>
     
     <string name="menu_update">Update</string>
@@ -65,7 +69,6 @@
     <string name="changelog_ok_button">OK</string>
     <string name="changelog_show_full">more&#8230;</string>
     <string name="changelog">Change Log</string>
-    <string name="ACT">All Class(no filter)</string>
     
     <!-- DashClock -->
     <string name="display_before">Display class before (minutes)</string>

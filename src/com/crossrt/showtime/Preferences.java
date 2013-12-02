@@ -22,7 +22,6 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 @SuppressWarnings("deprecation")
 public class Preferences extends PreferenceActivity implements OnSharedPreferenceChangeListener
@@ -37,11 +36,11 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 	private static final String MY_EMAIL = "crossRT@gmail.com";
 	private static final String ADDRESS_PLAYSTORE="market://details?id=com.crossrt.showtime";
 	private static final String ADDRESS_WEB="http://play.google.com/store/apps/details?id=com.crossrt.showtime";
-	//private static final String DONATE_LOCATION="https://dl.dropboxusercontent.com/u/14993838/ShowTimeDonate.html";
+	private static final String DONATE_LOCATION="https://dl.dropboxusercontent.com/u/14993838/ShowTimeDonate.html";
 	
 	//Strings in preference
-	private static final String SEND_TITLE = "Send email";
-	private static final String SHARE_TITLE = "Share onTime";
+	private final String SEND_TITLE = "Send email";
+	private final String SHARE_TITLE = "Share onTime";
 	
 	
 	private SharedPreferences config;
@@ -92,12 +91,15 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 			});
 		
 		//When menu donate is click
-		Preference menuDonate=findPreference("menu_donate");
+		Preference menuDonate=findPreference("menu_share");
 		menuDonate.setOnPreferenceClickListener(new OnPreferenceClickListener()
 			{
 				public boolean onPreferenceClick(Preference preference)
 				{
-					showDialog(DIALOG_DONATE);
+					Intent share = new Intent(Intent.ACTION_SEND);
+					share.setType("text/plain");
+					share.putExtra(Intent.EXTRA_TEXT, ADDRESS_PLAYSTORE);
+					startActivity(Intent.createChooser(share, SHARE_TITLE));
 					return true;
 				}
 			});
@@ -110,7 +112,6 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 				{
 					if(isNetworkAvailable())
 					{
-						Log.e("SHOWTIME","AVAILABLE");
 						ProgressDialog mProgressDialog = new ProgressDialog(Preferences.this);
 						ClassIntakeDownloader downloader = new ClassIntakeDownloader(Preferences.this, mProgressDialog);
 						downloader.execute();
@@ -200,13 +201,6 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 									startActivity(Intent.createChooser(emailIntent, SEND_TITLE));
 									break;
 								}
-								case 4:
-								{
-									Intent share = new Intent(Intent.ACTION_SEND);
-									share.setType("text/plain");
-									share.putExtra(Intent.EXTRA_TEXT, ADDRESS_PLAYSTORE);
-									startActivity(Intent.createChooser(share, SHARE_TITLE));
-								}
 							}
 						}
 					}
@@ -217,28 +211,27 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 			case DIALOG_ABOUTME:
 			{
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder.setTitle(R.string.about_me_title);
-				builder.setMessage(R.string.about_me_content);
+				builder.setTitle(R.string.about_title);
+				builder.setMessage(R.string.about_content);
 				builder.setPositiveButton("Okay", null);
 				builder.show();
 				break;
 			}
-//			case DIALOG_DONATE:
-//			{
-//				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//				builder.setTitle(R.string.donate_me);
-//				builder.setMessage(R.string.donate_me_content);
-//				builder.setPositiveButton("I have no money", null);
-//				builder.setNegativeButton("Yes, bring me on!",new DialogInterface.OnClickListener()
-//						{
-//							public void onClick(DialogInterface dialog, int id)
-//							{
-//								startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(DONATE_LOCATION)));
-//							}
-//						});
-//				builder.show();
-//				break;
-//			}
+			case DIALOG_DONATE:
+			{
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setTitle(R.string.donate_title);
+				builder.setMessage(R.string.donate_content);
+				builder.setNegativeButton(R.string.donate_button,new DialogInterface.OnClickListener()
+						{
+							public void onClick(DialogInterface dialog, int id)
+							{
+								startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(DONATE_LOCATION)));
+							}
+						});
+				builder.show();
+				break;
+			}
 			
 		}
 		return super.onCreateDialog(id);

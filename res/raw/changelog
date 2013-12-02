@@ -21,16 +21,18 @@
     </style>
   </head>
   <body>
-$ 3.2
-	% Current Version 3.4
-	_ 2013-06-10
-	! Concentrate on improve the UI.
-	! Strongly recommend new Holo Theme!
-		* NEW theme - Holo Series!
-		* UI re-color
-		* fixed filter error
-		* fixed Android 2.3 crash
-		* fixed some issues on 3.2
+$ 4.0
+	% Current Version 4.0 Anniversary update
+	_ 2013-12-02
+	! A huge update from v3.4
+	! Give comment if you like this update!
+		* Code re-factor, better performance
+		* UI, logo re-design
+		* Widget re-design
+		* fixed some intake can't be found
+		* fixed intake with '{XX}' can't update
+		* abandon Android 2.2 user, since it's obsolete and hard to maintain. Sorry for that.
+	! More extra function will come on next version!
 $ END_OF_CHANGE_LOG
   </body>
 </html>

@@ -42,8 +42,9 @@ public class Main extends SherlockFragmentActivity
 	private SQLiteDatabase db;
 	private Cursor cursor;
 	
-	protected static String intakeCode,theme; 							//Settings
-	protected static String filter_lecture,filter_lab,filter_tutorial; 	//Filter Settings
+	protected static String intakeCode,theme; 								//Settings
+	protected static String filter_lecture,filter_lab,filter_tutorial; 		//Filter Settings
+	protected static String oldIntake,oldLecture,oldLab,oldTutorial,oldTheme; //Old settings, should delete them from code after porting
 	protected static boolean dayGroup;
 	protected static boolean first;
 	protected static ArrayList<ClassPerclass> classes = new ArrayList<ClassPerclass>();
@@ -94,14 +95,18 @@ public class Main extends SherlockFragmentActivity
 				R.string.no_class_filter);
 		drawerLayout.setDrawerListener(drawerToggle);
 		
-		//Show changelog when new version installed
+		//Show changelog when 15 installed
 		ChangeLog changelog = new ChangeLog(this);
 		if (changelog.firstRun())
 		{
+			/* Delete old SharedPreferences */
+			SharedPreferences sp = getSharedPreferences("config", Context.MODE_PRIVATE);
+			SharedPreferences.Editor editor2 = sp.edit();
+			editor2.clear().commit();
+			
 			changelog.getLogDialog().show();
 			changelog.getLastVersion();
 		}
-		
 	}
 	
 	@Override
