@@ -29,9 +29,9 @@ $ 4.0
 		* Code re-factor, better performance
 		* UI, logo re-design
 		* Widget re-design
-		* fixed some intake can't be found
+		* fixed 'intake-can't-be-found' problem
 		* fixed intake with '{XX}' can't update
-		* abandon Android 2.2 user, since it's obsolete and hard to maintain. Sorry for that.
+		* abandoned Android 2.2 users, since it has obsoleted and hard to maintain. Sorry for that.
 	! More extra function will come on next version!
 $ END_OF_CHANGE_LOG
   </body>

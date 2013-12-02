@@ -41,8 +41,8 @@
     
     <!-- Preferences Dialog -->
     <string name="about_title">About</string>
-    <string name="about_content">onTime is ex-ShowTime, APU timetable assistant.\nThis app is created for convenience APU student.\n\nShare it to your friend if you found this is useful.\n\nCheers,\nCrossRT</string>
-    <string name="donate_content">This app is totally free, but if you are pleased with my work, feel free to donate me.\nYour donation will help on my next project.\nI will be grateful if you decide to donated for me.</string>
+    <string name="about_content">onTime is ex-ShowTime, APU's timetable assistant.\nThis app is created for the convenience of APU students.\n\nShare it to your friends if you found this app useful.\n\nCheers,\nCrossRT</string>
+    <string name="donate_content">This app is totally free, but if you are pleased with my work, feel free to donate me.\nYour donation will help on my next project.\nI will be very grateful if you have decided to donate me.</string>
     <string name="donate_button">Yes, bring me on!</string>
     <string name="contact_me">Contact me</string>
     
