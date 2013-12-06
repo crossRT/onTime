@@ -27,7 +27,7 @@ import android.preference.PreferenceManager;
 public class Preferences extends PreferenceActivity implements OnSharedPreferenceChangeListener
 {
 	//Constant
-	private static final String FILTER_UPDATED = "com.crossrt.showtime.FILTER_UPDATED";
+	private static final String FILTER_UPDATED = "com.crossrt.showtime.FILTER_UPDATED"; //For update widget
 	private static final int DIALOG_MENU=10;
 	private static final int DIALOG_ABOUTME=20;
 	private static final int DIALOG_DONATE=30;

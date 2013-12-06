@@ -23,7 +23,6 @@ public class DCWidget extends DashClockExtension
 {
 	protected static boolean gotClass;
 	protected static ArrayList<ClassPerclass> classes = new ArrayList<ClassPerclass>();
-	//protected static String[] service_date,service_time,service_clas,service_subj;
 	
 	protected static int before; //Minutes before the class
 	protected static int last; //Store index of last class in loop, avoid loop again. 

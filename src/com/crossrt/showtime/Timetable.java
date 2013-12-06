@@ -74,22 +74,6 @@ public abstract class Timetable extends SherlockFragment
 		LinearLayout.LayoutParams lp;
 		ll.removeAllViews();
 		
-		if(!filter_lecture.equals("") || !filter_lab.equals("") || !filter_tutorial.equals(""))
-		{
-			if(filter_lecture.equals(""))
-			{
-				filter_lecture = "-L";
-			}
-			if(filter_lab.equals(""))
-			{
-				filter_lab = "-LAB";
-			}
-			if(filter_tutorial.equals(""))
-			{
-				filter_tutorial = "-T";
-			}
-		}
-		
 		//set table layout
 		for(int i=0;i<classes.size();i++)
 		{

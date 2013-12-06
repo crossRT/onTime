@@ -22,10 +22,13 @@
   </head>
   <body>
 $ 4.0
-	% Current Version 4.0 Anniversary update
-	_ 2013-12-02
-	! A huge update from v3.4
-	! Give comment if you like this update!
+	% Current Version 4.0.1
+	_ 2013-12-03
+	! Bug fixed on new Widget
+	! Since the code is re-factor, there might be having some issue and it will cause force close. Sorry for inconvenient, I will fix it up as soon as possible.
+		* fixed several widget bug and force closed
+		
+	_ Version 4.0 (2013-12-03)
 		* Change name to onTime
 		* Code re-factor, better performance
 		* UI, logo re-design
