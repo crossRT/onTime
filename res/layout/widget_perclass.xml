@@ -58,7 +58,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_alignParentLeft="true"
 	        android:layout_alignParentRight="true"
-	        android:textSize="@dimen/widget_subject"
+	        android:textSize="@dimen/widget_module"
 	        android:textColor="@color/subject_grey"
 	        android:textIsSelectable="false" />
 	</RelativeLayout>

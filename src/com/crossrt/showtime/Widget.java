@@ -209,9 +209,9 @@ public class Widget extends AppWidgetProvider
 		widgetLayout.removeAllViews(R.id.widget_content);
 		
 		//First class will show here
-		widgetLayout.setTextViewText(R.id.widget_header_time, "");
-		widgetLayout.setTextViewText(R.id.widget_header_class, "");
-		widgetLayout.setTextViewText(R.id.widget_header_module, "");
+//		widgetLayout.setTextViewText(R.id.widget_header_time, "");
+//		widgetLayout.setTextViewText(R.id.widget_header_class, "");
+//		widgetLayout.setTextViewText(R.id.widget_header_module, "");
 				
 		//Set onClick listener
 		Intent intent = new Intent(context,Main.class);
@@ -241,9 +241,9 @@ public class Widget extends AppWidgetProvider
 		widgetLayout.removeAllViews(R.id.widget_content);
 		
 		//First class will show here
-		widgetLayout.setTextViewText(R.id.widget_header_time, classes.get(index).getTime());
-		widgetLayout.setTextViewText(R.id.widget_header_class, classes.get(index).getClasses());
-		widgetLayout.setTextViewText(R.id.widget_header_module, classes.get(index).getSubject());
+//		widgetLayout.setTextViewText(R.id.widget_header_time, classes.get(index).getTime());
+//		widgetLayout.setTextViewText(R.id.widget_header_class, classes.get(index).getClasses());
+//		widgetLayout.setTextViewText(R.id.widget_header_module, classes.get(index).getSubject());
 		
 		//Set onClick listener
 		Intent intent = new Intent(context,Main.class);

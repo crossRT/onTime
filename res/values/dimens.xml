@@ -14,13 +14,9 @@
     <dimen name="perclass_font_size">12sp</dimen>
     
     <!-- Widget -->
-    <dimen name="widget_timeclass">9sp</dimen>
-	<dimen name="widget_subject">10sp</dimen>
+    <dimen name="widget_title">11sp</dimen>
+    <dimen name="widget_timeclass">10sp</dimen>
+	<dimen name="widget_module">10sp</dimen>
 	<dimen name="widget_tittle">10sp</dimen>
-	
-	<!-- Widget font size -->
-    <dimen name="widget_time">10sp</dimen>
-    <dimen name="widget_class">10sp</dimen>
-    <dimen name="widget_module">12sp</dimen>
 
 </resources>
