@@ -11,17 +11,27 @@
 	<RelativeLayout
 		android:id="@+id/widget_header"
 		android:background="@color/header_blue"
-		android:layout_height="40dip" 
-		android:layout_width="match_parent"
-		android:paddingLeft="5dip" >
+		android:layout_height="35dip" 
+		android:layout_width="match_parent" 
+		android:paddingLeft="5dip">
+
+		<ImageView
+		    android:id="@+id/widget_icon"
+		    android:background="@drawable/ic_actionbar"
+		    android:layout_width="25dip"
+		    android:layout_height="25dip"
+		    android:layout_centerVertical="true" />
+
 		<TextView 
 		   android:text="@string/widget_todays_class"
 		   android:textSize="@dimen/widget_title"
 		   android:textColor="@color/widget_title_white"
 		   android:textStyle="bold"
-		   android:layout_width="fill_parent" 
-		   android:layout_height="fill_parent" 
-		   android:gravity="center" />
+		   android:layout_toRightOf="@id/widget_icon"
+		   android:layout_width="wrap_content"
+		   android:layout_height="wrap_content"
+		   android:layout_centerVertical="true"
+		   android:layout_marginLeft="3dip" />
 	</RelativeLayout>
 		
 	<LinearLayout 

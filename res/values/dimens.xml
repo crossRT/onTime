@@ -14,9 +14,8 @@
     <dimen name="perclass_font_size">12sp</dimen>
     
     <!-- Widget -->
-    <dimen name="widget_title">11sp</dimen>
+    <dimen name="widget_title">12sp</dimen>
     <dimen name="widget_timeclass">10sp</dimen>
 	<dimen name="widget_module">10sp</dimen>
-	<dimen name="widget_tittle">10sp</dimen>
 
 </resources>
