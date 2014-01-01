@@ -15,7 +15,7 @@
     
     <!-- Widget -->
     <dimen name="widget_title">12sp</dimen>
-    <dimen name="widget_timeclass">10sp</dimen>
+    <dimen name="widget_timeclass">8sp</dimen>
 	<dimen name="widget_module">10sp</dimen>
 
 </resources>

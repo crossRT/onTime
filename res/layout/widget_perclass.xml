@@ -7,7 +7,10 @@
     android:layout_marginBottom="3dp"
     android:layout_marginLeft="2dp"
     android:layout_marginRight="2dp"
-    android:padding="2dp"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    android:paddingTop="3dp"
+    android:paddingBottom="3dp"
     android:background="@color/table_lightGrey"
     android:orientation="vertical" >
 
@@ -17,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="0dp"
+        android:layout_marginBottom="1dp"
         android:padding="0dp">
 
         <TextView
@@ -27,7 +30,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:textSize="@dimen/widget_timeclass"
-            android:textColor="@color/time_grey"
+            android:textColor="@color/timeclass_grey"
             android:textIsSelectable="false" />
 
         <TextView
@@ -38,7 +41,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginRight="2dip"
             android:textSize="@dimen/widget_timeclass"
-            android:textColor="@color/time_grey"
+            android:textColor="@color/timeclass_grey"
             android:textIsSelectable="false" />
 
     </RelativeLayout>
