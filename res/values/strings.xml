@@ -2,7 +2,7 @@
 <resources>
     <!-- Global -->
     <string name="app_name">onTime</string>
-    <string name="app_version">onTime v4</string>
+    <string name="app_version">onTime v4.1.0</string>
     <string name="app_author">crossRT</string>
     <string name="author">by CrossRT\nClick to open menu</string>
     
@@ -45,9 +45,11 @@
     <string name="donate_content">This app is totally free, but if you are pleased with my work, feel free to donate me.\nYour donation will help on my next project.\nI will be very grateful if you have decided to donate me.</string>
     <string name="donate_button">Yes, bring me on!</string>
     <string name="contact_me">Contact me</string>
+    <string name="dashclock_button">Download DashClock now!</string>
+    <string name="dashclock_content">Get your class before unlock the screen</string>
     
     <string name="menu_update">Update</string>
-    <string name="no_class_filter">No class is matched\nPlease check your filter settings. </string>
+    <string name="no_class_filter">No class?\nTry PULL to refresh! </string>
     <string name="no_class_found">No class found</string>
     <string name="first_time">Thank you for using onTime\nNow pull to grab your timetable!</string>
     <string name="no_connection">No internet connection</string>

@@ -22,6 +22,11 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 @SuppressWarnings("deprecation")
 public class Preferences extends PreferenceActivity implements OnSharedPreferenceChangeListener
@@ -31,11 +36,14 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 	private static final int DIALOG_MENU=10;
 	private static final int DIALOG_ABOUTME=20;
 	private static final int DIALOG_DONATE=30;
+	private static final int DIALOG_DASHCLOCK=40;
 	
 	//Settings
 	private static final String MY_EMAIL = "crossRT@gmail.com";
-	private static final String ADDRESS_PLAYSTORE="market://details?id=com.crossrt.showtime";
-	private static final String ADDRESS_WEB="http://play.google.com/store/apps/details?id=com.crossrt.showtime";
+	private static final String ADDRESS_PLAY_MARKET="market://details?id=com.crossrt.showtime";
+	private static final String ADDRESS_PLAY_WEB="http://play.google.com/store/apps/details?id=com.crossrt.showtime";
+	private static final String ADDRESS_DC_MARKET="https://play.google.com/store/apps/details?id=net.nurik.roman.dashclock";
+	private static final String ADDRESS_DC_WEB="market://details?id=net.nurik.roman.dashclock";
 	private static final String DONATE_LOCATION="https://dl.dropboxusercontent.com/u/14993838/ShowTimeDonate.html";
 	
 	//Strings in preference
@@ -81,10 +89,10 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 				{
 					try
 					{
-					    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ADDRESS_PLAYSTORE)));
+					    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ADDRESS_PLAY_MARKET)));
 					}catch(android.content.ActivityNotFoundException e)
 					{
-					    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ADDRESS_WEB)));
+					    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ADDRESS_PLAY_WEB)));
 					}
 					return true;
 				}
@@ -98,7 +106,7 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 				{
 					Intent share = new Intent(Intent.ACTION_SEND);
 					share.setType("text/plain");
-					share.putExtra(Intent.EXTRA_TEXT, ADDRESS_PLAYSTORE);
+					share.putExtra(Intent.EXTRA_TEXT, ADDRESS_PLAY_MARKET);
 					startActivity(Intent.createChooser(share, SHARE_TITLE));
 					return true;
 				}
@@ -137,6 +145,17 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 					return true;
 				}
 			});
+	
+		//When DashClock is click
+		Preference menuDaskClock = findPreference("menu_dashclock");
+		menuDaskClock.setOnPreferenceClickListener(new OnPreferenceClickListener()
+		{
+			public boolean onPreferenceClick(Preference preference)
+			{
+				showDialog(DIALOG_DASHCLOCK);
+				return true;
+			}
+		});
 	}
 	
 	@Override
@@ -231,6 +250,38 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 						});
 				builder.show();
 				break;
+			}
+			case DIALOG_DASHCLOCK:
+			{
+				final Dialog builder = new Dialog(this);
+				builder.setTitle(R.string.dashclock_title);
+				builder.setContentView(R.layout.custom_dialog);
+				
+				TextView textView = (TextView) builder.findViewById(R.id.dialog_text);
+				textView.setText(R.string.dashclock_content);
+				
+				ImageView imageView = (ImageView) builder.findViewById(R.id.dialog_image);
+				imageView.setImageResource(R.drawable.dashclock);
+				
+				Button button = (Button) builder.findViewById(R.id.dialogButtonOK);
+				button.setOnClickListener(new OnClickListener()
+					{
+						@Override
+						public void onClick(View v)
+						{
+							try
+							{
+							    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ADDRESS_DC_MARKET)));
+							}catch(android.content.ActivityNotFoundException e)
+							{
+							    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ADDRESS_DC_WEB)));
+							}
+							builder.dismiss();
+						}
+						
+					});
+				
+				builder.show();
 			}
 			
 		}

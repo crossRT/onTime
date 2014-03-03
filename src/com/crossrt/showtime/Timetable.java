@@ -2,7 +2,11 @@ package com.crossrt.showtime;
 
 import java.util.ArrayList;
 
+import uk.co.senab.actionbarpulltorefresh.library.ActionBarPullToRefresh;
+import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
+import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +15,7 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
-public abstract class Timetable extends SherlockFragment
+public abstract class Timetable extends SherlockFragment implements OnRefreshListener
 {
 	private static final int MARGIN_FIRST = 10;
 	private static final int MARGIN_NORMAL = 10;
@@ -24,6 +28,9 @@ public abstract class Timetable extends SherlockFragment
 	protected boolean dayGroup;
 	protected boolean first;
 	protected ArrayList<ClassPerclass> classes = new ArrayList<ClassPerclass>();
+
+	private PullToRefreshLayout mPullToRefreshLayout;
+
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -58,6 +65,12 @@ public abstract class Timetable extends SherlockFragment
 				emptyMessage.setText(R.string.no_class_found);
 		}
 		
+		mPullToRefreshLayout = (PullToRefreshLayout) root.findViewById(R.id.ptr_layout);
+		if(mPullToRefreshLayout == null)
+		{
+			Log.e("SHOWTIME","mPullToRefreshLayout is NULL!!");
+		}
+		ActionBarPullToRefresh.from(getSherlockActivity()).allChildrenArePullable().listener(this).setup(mPullToRefreshLayout);
 		return root;
 	}
 	
@@ -149,4 +162,15 @@ public abstract class Timetable extends SherlockFragment
 	 * @return Manually return the title you want to set on ActionBar.
 	 */
 	public abstract String setTitle();
+	public abstract Timetable getInstance();
+	
+	@Override
+	public void onRefreshStarted(View view)
+	{
+		((Main)getSherlockActivity()).pendingUpdate();
+	}
+	public void cancelRefresh()
+	{
+		mPullToRefreshLayout.setRefreshComplete();
+	}
 }

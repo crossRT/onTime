@@ -150,6 +150,7 @@ public class ClassUpdater extends AsyncTask<String, Integer, String>
         			db.insert("timetableData","",values);
         			values.clear();
         		}
+        		db.close();
         		helper.close();
         		
     		}else emptyTable = true;
@@ -164,12 +165,12 @@ public class ClassUpdater extends AsyncTask<String, Integer, String>
 		super.onPostExecute(result);
 		if(success)
 		{
+			Intent updateAll =new Intent();
+    		updateAll.setAction(UPDATE_SUCCESS);
+    		context.sendBroadcast(updateAll);
+    		
 			if(!emptyTable)
 			{
-	    		Intent updateWidget =new Intent();
-	    		updateWidget.setAction(UPDATE_SUCCESS);
-	    		context.sendBroadcast(updateWidget);
-	    		
 	    		Toast.makeText(context, R.string.update_success, Toast.LENGTH_SHORT).show();
 			}else
 			{
@@ -181,8 +182,7 @@ public class ClassUpdater extends AsyncTask<String, Integer, String>
 			updateAll.setAction(UPDATE_FAIL);
     		context.sendBroadcast(updateAll);
     		
-			Toast toast = Toast.makeText(context, R.string.connection_error, Toast.LENGTH_SHORT);
-            toast.show();
+			Toast.makeText(context, R.string.connection_error, Toast.LENGTH_SHORT).show();
 		}
 	}
 }

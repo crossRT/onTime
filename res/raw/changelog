@@ -22,10 +22,14 @@
   </head>
   <body>
 $ 4.0
-	% Current Version 4.0.1
-	_ 2013-12-03
-	! Bug fixed on new Widget
-	! Since the code is re-factor, there might be having some issue and it will cause force close. Sorry for inconvenient, I will fix it up as soon as possible.
+	% Current Version 4.1.0
+	_ 2014-01-03
+		* add Pull To Refresh.
+		* remove dynamic widget and back to static, because of it is too buggy. (Moved to Beta, see announcement below)
+		* fixed some minor bug.
+		* Beta channel is launch, all latest function will add to here for testing. Send me an email if you want to join.
+	
+	_ Version 4.0.1 (2013-12-03)
 		* fixed several widget bug and force closed
 		
 	_ Version 4.0 (2013-12-03)

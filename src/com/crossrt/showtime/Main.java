@@ -146,16 +146,15 @@ public class Main extends SherlockFragmentActivity
 			{
 				String intentExtra = intent.getStringExtra(INTENT_EXTRA);
 				FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-				//Log.e("SHOWTIME",intentExtra.toString());
 				if(intentExtra!=null)
 				{
 					if(intentExtra.equals(LAUNCH_TODAY))
 					{
-						timetable = new TimetableToday();
+						timetable = new TimetableToday().getInstance();
 					}
 				}else
 				{
-					timetable = new TimetableNormal();
+					timetable = new TimetableNormal().getInstance();
 				}
 				tx.replace(R.id.main_fragment, timetable).commit();
 			}
@@ -170,15 +169,15 @@ public class Main extends SherlockFragmentActivity
 		switch(position)
 		{
 		case 0:
-			timetable = new TimetableNormal();
+			timetable = new TimetableNormal().getInstance();
 			tx.replace(R.id.main_fragment, timetable);
 			break;
 		case 1:
-			timetable = new TimetableToday();
+			timetable = new TimetableToday().getInstance();
 			tx.replace(R.id.main_fragment, timetable);
 			break;
 		case 2:
-			timetable = new TimetableAll();
+			timetable = new TimetableAll().getInstance();
 			tx.replace(R.id.main_fragment,timetable);
 			break;
 		case 3:
@@ -286,13 +285,19 @@ public class Main extends SherlockFragmentActivity
 							{
 								readData();
 								FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-								timetable = new TimetableNormal();
+								timetable = timetable.getInstance();
 								tx.replace(R.id.main_fragment, timetable);
 								tx.commit();
 								
 								unregisterReceiver(this);
 							}else
+							{
+								FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+								timetable = timetable.getInstance();
+								tx.replace(R.id.main_fragment, timetable);
+								tx.commit();
 								unregisterReceiver(this);
+							}
 						}
 					};
 				IntentFilter intentFilter = new IntentFilter();
@@ -307,6 +312,7 @@ public class Main extends SherlockFragmentActivity
 		}else
 		{
 			Toast.makeText(Main.this, R.string.no_connection, Toast.LENGTH_SHORT).show();
+			timetable.cancelRefresh();
 		}
 	}
 	
@@ -320,6 +326,7 @@ public class Main extends SherlockFragmentActivity
 		NetworkInfo networkInfo = cm.getActiveNetworkInfo();
 		return networkInfo != null;
 	}
+	
 	private void setActionBarTheme(String theme)
 	{
 		if(theme.equals("Holo Red"))

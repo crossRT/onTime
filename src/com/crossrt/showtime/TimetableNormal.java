@@ -1,6 +1,7 @@
 package com.crossrt.showtime;
 
 
+
 public class TimetableNormal extends Timetable
 {	
 	@Override
@@ -22,5 +23,11 @@ public class TimetableNormal extends Timetable
 	public String setTitle()
 	{
 		return "onTime";
+	}
+	
+	@Override
+	public Timetable getInstance()
+	{
+		return new TimetableNormal();
 	}
 }

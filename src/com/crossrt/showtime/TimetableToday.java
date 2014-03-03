@@ -36,6 +36,12 @@ public class TimetableToday extends Timetable
 		return "Today";
 	}
 	
+	@Override
+	public Timetable getInstance()
+	{
+		return new TimetableToday();
+	}
+	
 	public void getTodayDate()
 	{
 		today = new SimpleDateFormat("dd-MMM",Locale.US).format(new Date());

@@ -6,7 +6,7 @@
     <PreferenceCategory android:key="Features" android:title="@string/preferences_features" >
        	<ListPreference android:entries="@array/options_theme" android:entryValues="@array/options_theme" android:key="theme" android:title="@string/theme_title" />
        	<CheckBoxPreference android:key="auto_update" android:title="@string/autoupdate_title" android:summaryOn="@string/autoupdate_on" android:summaryOff="@string/autoupdate_off"/>
-       	<CheckBoxPreference android:summaryOn="@string/group_on" android:summaryOff="@string/group_off" android:key="day_group" android:title="@string/group_title"/><Preference android:title="@string/dashclock_title" android:summary="@string/dashclock_summary" />
+       	<CheckBoxPreference android:summaryOn="@string/group_on" android:summaryOff="@string/group_off" android:key="day_group" android:title="@string/group_title"/><Preference android:title="@string/dashclock_title" android:summary="@string/dashclock_summary" android:key="menu_dashclock"/>
        	
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/intake_title" android:key="Intake">
